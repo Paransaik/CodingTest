@@ -1,5 +1,5 @@
 from typing import *
-# 8.30. am. 21:30~
+# 8.30. pm. 21:30~23:00
 
 def dart_game(arr1: List[int]) -> int:
     num: List[int] = [0]
