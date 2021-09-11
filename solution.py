@@ -11,31 +11,101 @@
 triangle	result
 [[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]	30
 '''
+#
+# import sys
+#
+# def solution(triangle):
+#     sum = 0
+#     answer = 0
+#     max = sys.maxsize
+#
+#     def dfs(tree, index):
+#         tree()
+#
+#         index += 1
+#
+#     for e in triangle:
+#         dfs(e, 0)
+#
+#
+#
+#     print(triangle)
+#
+#     # node = triangle.pop()
+#     # print(node.val)
+#
+#
+#
+#     return answer
+#
+# print('reslut', solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))  # 30
 
-import sys
+# 백준 이진탐색
+# a, b = input().split()
+# sum = 0
+# result = 1
+# ransun = []
+#
+# for i in range(int(a)):
+#     ransun.append(int(input()))
+#
+# for i in range(min(ransun), 0, -1):
+#     for j in range(int(a)):
+#         sum += ransun[j] // i
+#     if sum >= int(b):
+#         print(i)
+#         break
+#     sum = 0
+from collections import Counter
+def solution(v):
+    answer = []
+    resultX, resultY = [], []
 
-def solution(triangle):
-    sum = 0
-    answer = 0
-    max = sys.maxsize
+    for x, y in v:
+        print(x, y)
+        resultX.append(x)
+        resultY.append(y)
 
-    def dfs(tree, index):
-        tree()
+    xV = list(Counter(resultX).values())
+    xK = list(Counter(resultX).keys())
 
-        index += 1
+    yV = list(Counter(resultY).values())
+    yK = list(Counter(resultY).keys())
+    for i in range(len(xV)):
+        if xV[i] == 1:
+            answer.append(xK[i])
 
-    for e in triangle:
-        dfs(e, 0)
-
-
-
-    print(triangle)
-
-    # node = triangle.pop()
-    # print(node.val)
-
-
+    for i in range(len(xV)):
+        if yV[i] == 1:
+            answer.append(yK[i])
 
     return answer
+print('reslut', solution([[1, 4], [3, 4], [3, 10]]))
+print('reslut', solution([[1, 1], [2, 2], [1, 2]]))
 
-print('reslut', solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))  # 30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
