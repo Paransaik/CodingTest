@@ -18,28 +18,55 @@
 # 88MS 65 136 54.622%
 
 # 공백 출력 함수
-def non_space(num):
-    for i in range(num//3):
-        for j in range(num//3):
-            print('*', end='')
+# def non_space(num):
+#     for i in range(num//3):
+#         for j in range(num//3):
+#             print('*', end='')
+#
+# def space(num):
+#     for i in range(num//3):
+#         for j in range(num//3):
+#             print(' ', end='')
+#
+# def thre(num):
+#     if num == 3:
+#         for i in range(num):
+#             for j in range(num):
+#                 if i % 3 == 1 and j % 3 == 1:
+#                     space(num)
+#                 else:
+#                     non_space(num)
+#     else:
+#         for i in range(num):
+#             for j in range(num):
+#                 thre(num//3)
+#             print()
+#
+# print(thre(3))
 
-def space(num):
-    for i in range(num//3):
-        for j in range(num//3):
-            print(' ', end='')
+# BOJ 2304
 
-def thre(num):
-    if num == 3:
-        for i in range(num):
-            for j in range(num):
-                if i % 3 == 1 and j % 3 == 1:
-                    space(num)
-                else:
-                    non_space(num)
+x = int(input())
+board = [0 for i in range(1000)]
+for _ in range(x):
+    a, b = map(int, input().split())
+    board[a] = b
+
+volume = 0
+left, right = 0, 999
+left_max, right_max = board[left], board[right]
+
+while left < right:
+    left_max, right_max = max(left_max, board[left]), max(right_max, board[right])
+
+    if left_max <= right_max:
+        volume += left_max
+        left += 1
     else:
-        for i in range(num):
-            for j in range(num):
-                thre(num//3)
-            print()
-            
-print(thre(3))
+        volume += right_max
+        right -= 1
+
+volume += board[left]
+print(volume)
+
+# BOJ 14719
