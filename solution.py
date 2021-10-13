@@ -1,111 +1,18 @@
-'''
-삼각형의 꼭대기에서 바닥까지 이어지는 경로 중, 거쳐간 숫자의 합이 가장 큰 경우를 찾아보려고 합니다. 아래 칸으로 이동할 때는 대각선 방향으로 한 칸 오른쪽 또는 왼쪽으로만 이동 가능합니다. 예를 들어 3에서는 그 아래칸의 8 또는 1로만 이동이 가능합니다.
+def solution(n, computers):
+    def dfs(i, j):
+        if i < 0 or i >= n or j < 0 or j >= n or computers[i][j] != 1 or i == j:
+            return
 
-삼각형의 정보가 담긴 배열 triangle이 매개변수로 주어질 때, 거쳐간 숫자의 최댓값을 return 하도록 solution 함수를 완성하세요.
+        computers[i][j] = 0
 
-제한사항
-삼각형의 높이는 1 이상 500 이하입니다.
-삼각형을 이루고 있는 숫자는 0 이상 9,999 이하의 정수입니다.
+        dfs(j, i)
 
-입출력 예
-triangle	result
-[[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]	30
-'''
-#
-# import sys
-#
-# def solution(triangle):
-#     sum = 0
-#     answer = 0
-#     max = sys.maxsize
-#
-#     def dfs(tree, index):
-#         tree()
-#
-#         index += 1
-#
-#     for e in triangle:
-#         dfs(e, 0)
-#
-#
-#
-#     print(triangle)
-#
-#     # node = triangle.pop()
-#     # print(node.val)
-#
-#
-#
-#     return answer
-#
-# print('reslut', solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))  # 30
-
-# 백준 이진탐색
-# a, b = input().split()
-# sum = 0
-# result = 1
-# ransun = []
-#
-# for i in range(int(a)):
-#     ransun.append(int(input()))
-#
-# for i in range(min(ransun), 0, -1):
-#     for j in range(int(a)):
-#         sum += ransun[j] // i
-#     if sum >= int(b):
-#         print(i)
-#         break
-#     sum = 0
-from collections import Counter
-def solution(v):
-    answer = []
-    resultX, resultY = [], []
-
-    for x, y in v:
-        print(x, y)
-        resultX.append(x)
-        resultY.append(y)
-
-    xV = list(Counter(resultX).values())
-    xK = list(Counter(resultX).keys())
-
-    yV = list(Counter(resultY).values())
-    yK = list(Counter(resultY).keys())
-    for i in range(len(xV)):
-        if xV[i] == 1:
-            answer.append(xK[i])
-
-    for i in range(len(xV)):
-        if yV[i] == 1:
-            answer.append(yK[i])
-
+    answer = 0
+    for i in range(n):
+        for j in range(n):
+            if computers[i][j] == 1:
+                dfs(i, j)
+                answer += 1
     return answer
-print('reslut', solution([[1, 4], [3, 4], [3, 10]]))
-print('reslut', solution([[1, 1], [2, 2], [1, 2]]))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))  # 2
+print(solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]))  # 1
