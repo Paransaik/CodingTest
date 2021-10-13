@@ -1,25 +1,25 @@
-# BOJ 2304
-x = int(input())
-board = [0 for i in range(1001)]
-for _ in range(x):
-    a, b = map(int, input().split())
-    board[a] = b
+# BOJ 1662
+a = "33(562(71(9)))"
+result = ""
+# 스택
+board = list(a)
 
-volume = 0
-left, right = 0, 1000
-left_max, right_max = board[left], board[right]
+def recus(S):
+    if len(S) == 0:
+        return result
 
-while left < right:
-    left_max, right_max = max(left_max, board[left]), max(right_max, board[right])
+    for i, s in enumerate(board):
+        if s == '(':
+            # push [:i-1]
+            Str = board[i+1:]
+            recus(Str)
+        elif s == ')':
+            # pop = l
+            # result = l[:-1] + l[-1] * board[:i-1]
+            return result
 
-    if left_max <= right_max:
-        volume += left_max
-        left += 1
-    else:
-        volume += right_max
-        right -= 1
+print(recus(a))
 
-volume += board[left]
-print(volume)
-
-# BOJ 14719
+#66	141	53.226%
+#67	142	53.600%
+#67	143	53.600%
