@@ -30,9 +30,3 @@ def tree(num):
 
 a = 9
 tree(a)
-# for i in range(a//3):
-#     for j in range(a//3):
-#         if i % 3 == 1 and j % 3 == 1:
-#             pass
-#         else:
-#             tree(a//3)
