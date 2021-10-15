@@ -1,32 +1,14 @@
-def nonspace(num):
-    for i in range(num):
-        print('*', end='')
+# BOJ 2606
 
-def space(num):
-    for i in range(num):
-        print(' ', end='')
+a = 4# int(input())  # 노드 개수
+b = 5# int(input())  # 간선 개수
 
-def big_space(num):
-    for i in range(num//3):
-        for j in range(num//3):
+dic = {}
+for i in range(a):
+    dic[i+1] = ""
+print(dic)
+print(dic[1])
 
-def tree(num):
-    if num == 3:
-        for i in range(num):
-            for j in range(num):
-                if i % 3 == 1 and j % 3 == 1:
-                    space(num//3)
-                else:
-                    nonspace(num//3)
-            print()
-    else:
-        for i in range(num):
-            for j in range(num):
-                if i % 3 == 1 and j % 3 == 1:
-                    space(num//3)
-                else:
-                    tree(num//3)
-            print()
+for i in range(b):
+    pass  # 딕셔너리 선언
 
-a = 9
-tree(a)
