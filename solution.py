@@ -1,32 +1,85 @@
-# BOJ 1662
-# import sys
-# print(sys.getsizeof(9))
-# print(sys.getsizeof("9"))
+# 2021.10.16. 14~16, 4문제(프로그래밍3+SQL1)
+# 2021 Dev-Matching: 웹 백엔드 개발자(하반기)
 
-# a = input()
-# a = "33(562(71(9)))"
-a = "15(22)13(92(1111)42(222))" #60
-# a = "15(22)13(92(1111)42(222))123(1)45" #67
+# def solution(registered_list, new_id):
+#     answer = ''
+#
+#     def divis():  # 문자열 분리 함수
+#
+#         for w in registered_list:
+#             if w == new_id:
+#
+#     return answer
+
+# from collections import OrderedDict
+# def solution(leave, day, holidays):
+#     answer = 0
+#     num = 0
+#     h = ''
+#     reslut = []
+#
+#     holiday = [False for i in range(1, 31)]
+#     days = [['MON', False],
+#             ['TUE', False],
+#             ['WED', False],
+#             ['THU', False],
+#             ['FRI', False],
+#             ['SAT', True],
+#             ['SUN', True]]
+#
+#     # Cycle을 위한 몇번째 요일인지 구함
+#     for m, w in days:
+#         if day == m:
+#             break
+#         else:
+#             num += 1
+#
+#     # 달력에 토, 일 표시
+#     for i in range(30):
+#         holiday[i] = days[(num + i) % 7][1]
+#
+#     # 달력에 연휴 표시
+#     for h in holidays:
+#         holiday[h-1] = True
+#
+#     for i in range(30):
+#         if holiday[i] == True:
+#             holiday[i] = 1
+#         else:
+#             holiday[i] = 0
+#
+#     def dfs(elements, start, leave):  # 조합 휴일이 아닌 수, leave
+#         if leave == 0:
+#             h = ''.join(map(str, holiday))
+#             # print(holiday)
+#             reslut.append(len(max(h.split('0'), key=len)))
+#             return
+#
+#         for i in range(start, 30):
+#             if holiday[i] == 0:
+#                 holiday[i] = 1
+#                 dfs(holiday, i+1, leave-1)
+#                 holiday[i] = 0
+#     dfs(holiday, 0, leave)
+#
+#     return sorted(reslut)[-1]
+#
+# print(solution(5, "FRI", [6, 21, 23, 27, 28]))  #10
+# #print(solution(3, "SUN", [2, 6, 17, 29]))  #8
+
+# 2751 번 문제
+# 수 정렬하기 2
+
+from sys import stdin
+
+a = int(input())
 stack = []
 
-board = a.split('(')
+for i in range(a):
+    b = int(input())
+    if b == 0 and bool(stack):
+        stack.pop()
+    else:
+        stack.append(b)
 
-for i in range(len(board)):
-    stack.append(board[i])
-# print(stack)
-
-board = stack.pop().split(')')
-print(stack)
-print(board)
-result = len(board[0])
-
-for i in range(1, len(board)):
-    last_word = str(stack.pop())
-    # print(last_word, len(last_word[:-1]), result, int(last_word[-1]), len(board[i]))
-    result = len(last_word[:-1]) + result * int(last_word[-1]) + len(board[i])
-
-print(result)
-
-#66	141	53.226%
-#67	142	53.600%
-#67	143	53.600%
+print(sum(stack))
