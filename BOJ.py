@@ -31,31 +31,3 @@
 # #67	142	53.600%
 # #67	143	53.600%
 
-# 1193
-import sys
-input = int(sys.stdin.readline())
-
-i, j = 1, 0
-col = 1
-count = 1
-
-for k in range(count):
-    if col % 2 == 0:
-        i += 1
-        for l in range(col):
-            i += 1
-            j -= 1
-            count += 1
-            if count == input:
-                break
-    else:
-        j += 1
-        for l in range(col):
-            i -= 1
-            j += 1
-            count += 1
-            if count == input:
-                break
-    col += 1
-
-print('{}/{}'.format(i, j))
