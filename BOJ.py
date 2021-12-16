@@ -32,14 +32,30 @@
 # #67	143	53.600%
 
 # 1193
-a, b = 1, 1
-c = 3
+import sys
+input = int(sys.stdin.readline())
 
-while(c > 1):
-    if c % 2 == 0:
+i, j = 1, 0
+col = 1
+count = 1
 
+for k in range(count):
+    if col % 2 == 0:
+        i += 1
+        for l in range(col):
+            i += 1
+            j -= 1
+            count += 1
+            if count == input:
+                break
     else:
+        j += 1
+        for l in range(col):
+            i -= 1
+            j += 1
+            count += 1
+            if count == input:
+                break
+    col += 1
 
-    c -= 1
-
-print(str(a) + '/' + str(b))
+print('{}/{}'.format(i, j))
