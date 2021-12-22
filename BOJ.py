@@ -49,7 +49,6 @@ import sys
 
 a, index = map(int, input().split())
 intnum = [i+1 for i in range(a)]
-discoverd = []
 prev_elements = []
 result = []
 
@@ -58,8 +57,6 @@ def dfs(intnum):
         result.append(prev_elements[:])
 
     for i in intnum[:]:
-        discoverd.append(i)
-        if i in discoverd:
             intnum.remove(i)
             prev_elements.append(i)
 
