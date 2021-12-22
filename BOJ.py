@@ -45,30 +45,34 @@ import sys
 #
 # print(stack[0])
 
-# 15651
+# 15650
 
 a, index = map(int, input().split())
+intnum = [i+1 for i in range(a)]
+discoverd = []
+prev_elements = []
 result = []
 
-def dfs(elements, index: int):
-    if index == 0:
-        result.append(elements[:])
-        return
+def dfs(intnum):
+    if len(prev_elements) == index:
+        result.append(prev_elements[:])
 
-    for i in range(1, a + 1):
-        elements.append(i)
-        dfs(elements, index - 1)
-        elements.pop()
+    for i in intnum[:]:
+        discoverd.append(i)
+        if i in discoverd:
+            intnum.remove(i)
+            prev_elements.append(i)
 
-dfs([], index)
+            dfs(intnum)
+            intnum.append(i)
+            prev_elements.pop()
+
+dfs(intnum)
+result.sort()
+
 for i in result:
-    print(i)
-
-
-# for i in result:
-#     for j in i:
-#         print(j, end=' ')
-#     print()
+    if i == sorted(i):
+        print(*i)
 
 # for i in result:
 #     if i == sorted(i):
