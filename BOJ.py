@@ -45,25 +45,29 @@ import sys
 #
 # print(stack[0])
 
-# 15665
+# 15664
 import sys
 
 a, index = map(int, sys.stdin.readline().split())
-input = list(set(list(map(int, sys.stdin.readline().split()))))
+input = list(map(int, sys.stdin.readline().split()))
 result = []
 
 def dfs(elements, index):
     if index == 0:
-        result.append(elements[:])
+        if elements == sorted(elements):
+            result.append(elements[:])
         return
 
     for i in input[:]:
         elements.append(i)
+        input.remove(i)
         dfs(elements, index - 1)
+        input.append(i)
         elements.pop()
 
 dfs([], index)
-result.sort()
+
+result = sorted(list(set([tuple(item) for item in result])))
 
 for i in result:
     for j in i:
@@ -74,7 +78,7 @@ for i in result:
 #     if i == sorted(i):
 #         print(*i)
 
-# if elements == sorted(elements):
+
 
 
 
