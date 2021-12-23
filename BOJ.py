@@ -45,11 +45,11 @@ import sys
 #
 # print(stack[0])
 
-# 15657
+# 15666
 import sys
 
 a, index = map(int, sys.stdin.readline().split())
-input = list(map(int, sys.stdin.readline().split()))
+input = list(set(list(map(int, sys.stdin.readline().split()))))
 result = []
 
 def dfs(elements, index):
