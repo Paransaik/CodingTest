@@ -45,41 +45,25 @@ import sys
 #
 # print(stack[0])
 
-# 15663
-import sys
+# 10162
+a = int(input())
+b, c, d = 0, 0, 0
 
-a, index = map(int, sys.stdin.readline().split())
-input = list(map(int, sys.stdin.readline().split()))
-result = []
+while a > 0:
+    if a >= 300:
+        a -= 300
+        b += 1
+    elif a >= 60:
+        a -= 60
+        c += 1
+    else:
+        a -= 10
+        d += 1
 
-def dfs(elements, index):
-    if index == 0:
-        result.append(elements[:])
-        return
-
-    for i in input[:]:
-        elements.append(i)
-        input.remove(i)
-        dfs(elements, index - 1)
-        input.append(i)
-        elements.pop()
-
-dfs([], index)
-
-result = sorted(list(set([tuple(item) for item in result])))
-
-for i in result:
-    for j in i:
-        print(j, end=' ')
-    print()
-
-# for i in result:
-#     if i == sorted(i):
-#         print(*i)
-
-
-
-
+if a != 0:
+    print(-1)
+else:
+    print('{} {} {}'.format(b, c, d))
 
 
 
