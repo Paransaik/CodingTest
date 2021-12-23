@@ -45,7 +45,7 @@ import sys
 #
 # print(stack[0])
 
-# 15666
+# 15665
 import sys
 
 a, index = map(int, sys.stdin.readline().split())
@@ -54,8 +54,7 @@ result = []
 
 def dfs(elements, index):
     if index == 0:
-        if elements == sorted(elements):
-            result.append(elements[:])
+        result.append(elements[:])
         return
 
     for i in input[:]:
@@ -75,7 +74,7 @@ for i in result:
 #     if i == sorted(i):
 #         print(*i)
 
-
+# if elements == sorted(elements):
 
 
 
