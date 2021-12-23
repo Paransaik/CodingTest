@@ -45,7 +45,7 @@ import sys
 #
 # print(stack[0])
 
-# 15656
+# 15654
 
 a, index = map(int, input().split())
 input = list(map(int, input().split()))
@@ -56,13 +56,15 @@ def dfs(elements, index: int):
         result.append(elements[:])
         return
 
-    for i in input[:]:
+    for i in sorted(input[:]):
         elements.append(i)
+        input.remove(i)
         dfs(elements, index - 1)
+        input.append(i)
         elements.pop()
 
 dfs([], index)
-result.sort()
+
 for i in result:
     for j in i:
         print(j, end=' ')
