@@ -45,25 +45,10 @@ import sys
 #
 # print(stack[0])
 
-# 10162
+# 11720
 a = int(input())
-b, c, d = 0, 0, 0
-
-while a > 0:
-    if a >= 300:
-        a -= 300
-        b += 1
-    elif a >= 60:
-        a -= 60
-        c += 1
-    else:
-        a -= 10
-        d += 1
-
-if a != 0:
-    print(-1)
-else:
-    print('{} {} {}'.format(b, c, d))
-
-
-
+b = input()
+c = 0
+for i in range(a):
+    c += int(b[i])
+print(c)
