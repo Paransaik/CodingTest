@@ -46,9 +46,24 @@ import sys
 # print(stack[0])
 
 # 11720
-a = int(input())
-b = input()
-c = 0
-for i in range(a):
-    c += int(b[i])
-print(c)
+# a = int(input())
+#
+# for i in range(a):
+#     c += int(b[i])
+# print(c)
+
+
+
+# BOJ 10992
+n = int(input())
+for i in range(1, n):
+    for j in range(n-i, 0, -1):
+        print(" ", end='')
+    print("*", end='')
+    for k in range(i*2-3):
+        print(" ", end='')
+    if i > 1:
+        print("*", end='')
+    print()
+for l in range(n*2-1):
+    print("*", end='')
