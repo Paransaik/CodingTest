@@ -54,16 +54,16 @@ import sys
 
 
 
-# BOJ 10992
-n = int(input())
-for i in range(1, n):
-    for j in range(n-i, 0, -1):
-        print(" ", end='')
-    print("*", end='')
-    for k in range(i*2-3):
-        print(" ", end='')
-    if i > 1:
-        print("*", end='')
-    print()
-for l in range(n*2-1):
-    print("*", end='')
+# BOJ 1009
+import sys
+a = int(sys.stdin.readline())
+for i in range(a):
+    b, c = map(int, sys.stdin.readline().split())
+    d = 1
+    for j in range(c):
+        d = d * b % 10
+    if d == 0:
+        d = 10
+    if b == 0 and c == 0:
+        d = 0
+    print(d)
