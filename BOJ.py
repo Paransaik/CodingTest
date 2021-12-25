@@ -54,16 +54,16 @@ import sys
 
 
 
-# BOJ 1009
+# BOJ 1002
+# 0 0 3 1 2 1
 import sys
-a = int(sys.stdin.readline())
+
+a = int(input())
 for i in range(a):
-    b, c = map(int, sys.stdin.readline().split())
-    d = 1
-    for j in range(c):
-        d = d * b % 10
-    if d == 0:
-        d = 10
-    if b == 0 and c == 0:
-        d = 0
-    print(d)
+    result = []
+    x1, y1, r1, x2, y2, r2 = map(int, sys.stdin.readline().split())
+    for i in range(y1-r1, y2+r2+1):
+        for j in range(x1-r1, x2+r2+1):
+            if ((x1 - j)**2 + (y1 - i)**2)**0.5 == r1 and ((x2 - j)**2 + (y2 - i)**2)**0.5 == r2:
+                result.append([i, j])
+    print(len(result), result)
