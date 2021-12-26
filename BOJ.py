@@ -56,14 +56,44 @@ import sys
 
 # BOJ 1002
 # 0 0 3 1 2 1
-import sys
+# import sys
+#
+# a = int(input())
+# for i in range(a):
+#     result = []
+#     x1, y1, r1, x2, y2, r2 = map(int, sys.stdin.readline().split())
+#     for i in range(y1-r1, y2+r2+1):
+#         for j in range(x1-r1, x2+r2+1):
+#             if ((x1 - j)**2 + (y1 - i)**2)**0.5 == r1 and ((x2 - j)**2 + (y2 - i)**2)**0.5 == r2:
+#                 result.append([i, j])
+#     print(len(result), result)
 
-a = int(input())
-for i in range(a):
-    result = []
-    x1, y1, r1, x2, y2, r2 = map(int, sys.stdin.readline().split())
-    for i in range(y1-r1, y2+r2+1):
-        for j in range(x1-r1, x2+r2+1):
-            if ((x1 - j)**2 + (y1 - i)**2)**0.5 == r1 and ((x2 - j)**2 + (y2 - i)**2)**0.5 == r2:
-                result.append([i, j])
-    print(len(result), result)
+# BOJ 4949
+import sys
+a = ''
+while a != '.':
+    stack = []
+    flag = 0
+    a = sys.stdin.readline().rstrip()
+    for w in a:
+        if w == '(':
+            stack.append('(')
+        elif w == ')':
+            if bool(stack) and stack[-1] == '(':
+                stack.pop()
+            else:
+                flag = 1
+                break
+        if w == '[':
+            stack.append('[')
+        elif w == ']':
+            if bool(stack) and stack[-1] == '[':
+                stack.pop()
+            else:
+                flag = 1
+                break
+
+    if flag == 0 and a != '.' and len(stack) == 0:
+        print("yes")
+    elif a != '.':
+        print("no")
