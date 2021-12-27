@@ -68,32 +68,6 @@ import sys
 #                 result.append([i, j])
 #     print(len(result), result)
 
-# BOJ 4949
-import sys
-a = ''
-while a != '.':
-    stack = []
-    flag = 0
-    a = sys.stdin.readline().rstrip()
-    for w in a:
-        if w == '(':
-            stack.append('(')
-        elif w == ')':
-            if bool(stack) and stack[-1] == '(':
-                stack.pop()
-            else:
-                flag = 1
-                break
-        if w == '[':
-            stack.append('[')
-        elif w == ']':
-            if bool(stack) and stack[-1] == '[':
-                stack.pop()
-            else:
-                flag = 1
-                break
-
-    if flag == 0 and a != '.' and len(stack) == 0:
-        print("yes")
-    elif a != '.':
-        print("no")
+# BOJ 1212
+a = format(int(input(), 8), 'b')
+print(f'{a}')
