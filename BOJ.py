@@ -52,8 +52,6 @@ import sys
 #     c += int(b[i])
 # print(c)
 
-
-
 # BOJ 1002
 # 0 0 3 1 2 1
 # import sys
@@ -68,6 +66,62 @@ import sys
 #                 result.append([i, j])
 #     print(len(result), result)
 
-# BOJ 1212
-a = format(int(input(), 8), 'b')
-print(f'{a}')
+# BOJ 17298
+# 20
+# 5 4 6  9  8 41 3 2 1 5 4 7  5  52 4 5  5  4 5  45
+# 6 6 9 41 41 5  5 5 5 7 7 52 52 -1 5 5  5  5 45 -1
+# 6 6 9 41 41 52 5 5 5 7 7 52 52 -1 5 45 45 5 45 -1
+
+# a = int(input())
+# input = list(map(int, input().split()))[::-1]
+#
+# stack = []
+# output = []
+# max = -1
+# for i in range(a):
+#     num = input[i]
+#
+#     if bool(stack):  # 스택이 안 비어 있으면
+#         if num < stack[-1]:
+#             max = stack[-1]
+#             output.append(max)
+#         else:
+#             while bool(stack) and num >= stack[-1]:
+#                 stack.pop()
+#             if bool(stack):
+#                 output.append(max)
+#             else:
+#                 output.append(-1)
+#     else:  # 스택이 비어 있으면
+#         output.append(-1)
+#
+#     stack.append(num)
+#
+# print(*output[::-1])
+
+a = int(input())
+input_lst = list(map(int, input().split()))[::-1]
+stack = []
+output = []
+max_val = -1  # 함수를 변수명 X
+
+for i in range(a):
+    num = input_lst[i]
+    if stack:  # PEP8 기반
+        if num < stack[-1]:
+            max_val = stack[-1]
+            output.append(max_val)
+        else:
+            while stack and num >= stack[-1]:
+                stack.pop()
+            if stack:
+                # stack의 맨 뒤와 max_val중에 큰 값을 넣어줌
+                output.append(max(max_val, stack[-1]))
+            else:
+                output.append(-1)
+    else:  # 스택이 비어 있으면
+        output.append(-1)
+
+    stack.append(num)
+
+print(*output[::-1])
