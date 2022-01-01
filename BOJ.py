@@ -138,7 +138,7 @@ for i in range(a + d):
 for i in range(a):
     for j in range(b):
         if i - c > -1 and j - d > -1:
-            board[i][j] = board[i][j] - board[i - c][j - d]
+            board[i][j] -= board[i - c][j - d]
         print(board[i][j], end=' ')
     print()
 
