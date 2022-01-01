@@ -127,5 +127,35 @@ import sys
 #
 # print(*output[::-1])
 
-# BOJ 11654
-print(ord(input()))
+# 16967 BOJ
+import sys
+
+a, b, c, d = map(int, input().split())
+board = []
+for i in range(a + d):
+    board.append(list(map(int, sys.stdin.readline().split())))
+
+for i in range(a):
+    for j in range(b):
+        if i - c > -1 and j - d > -1:
+            board[i][j] = board[i][j] - board[i - c][j - d]
+        print(board[i][j], end=' ')
+    print()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
