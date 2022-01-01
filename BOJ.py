@@ -127,28 +127,34 @@ import sys
 #
 # print(*output[::-1])
 
-# 16967 BOJ
+# BOJ 1003
+# n = int(input())
+# fibo = [i for i in range(n)]
+# fibo[0], fibo[1] = 0, 1
+# z_num, o_num = 0, 0
+#
+# for j in range(2, n):
+#     if j == 0:
+#         z_num += 1
+#     elif j == 1:
+#         o_num += 1
+#
+#     fibo[j] = fibo[j-1] + fibo[j-2]
+#
+# print(fibo)
+# print(z_num, o_num)
+
+# BOJ 4344
 import sys
-
-a, b, c, d = map(int, input().split())
-board = []
-for i in range(a + d):
-    board.append(list(map(int, sys.stdin.readline().split())))
-
-for i in range(a):
-    for j in range(b):
-        if i - c > -1 and j - d > -1:
-            board[i][j] -= board[i - c][j - d]
-        print(board[i][j], end=' ')
-    print()
-
-
-
-
-
-
-
-
+student = int(input())
+for i in range(student):
+    count = 0
+    score = list(map(int, sys.stdin.readline().split()))
+    avg = sum(score[1:])/score[0]
+    for j in range(1, score[0]+1):
+        if score[j] > avg:
+            count += 1
+    print("{0:2.3f}%".format(count/score[0]*100))
 
 
 
