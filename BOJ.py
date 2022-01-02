@@ -128,13 +128,14 @@ import sys
 # print(*output[::-1])
 
 # BOJ 15624
-# c = int(input())
-# fibo_arr = [0, 1]
-#
-# for i in range(2, c + 1):
-#     fibo_arr.append((fibo_arr[i - 1] + fibo_arr[i - 2]) % 1000000007)
-#
-# print(fibo_arr[c])
+num = int(input())
+fibo_arr = [0, 1]
+
+for i in range(2, num + 1):
+    fibo_arr.append((fibo_arr[i - 1] + fibo_arr[i - 2]) % 1000000007)
+
+print(fibo_arr[num])
+
 
 # BOJ 6571
 # import sys
@@ -176,21 +177,4 @@ import sys
 7120173264166200447341031676879822985911048856417796988186888833122877410146972014072371597829804869 8144503087348566694885604318751717790167543368468531493118313793412417656482722843319153050694310553
 4369415704822180569005477006361489554316455451765125313894589090270932641843054782016142990133724688 8123609269705723215191701477768805636973046372374980500772572981827610126522689500678231584600510212
 '''
-# BOJ 1788
-num = int(input())
-abs_num = abs(num)
 
-fibo_arr = [0, 1]
-for i in range(2, abs_num + 1):
-    fibo_arr.append((fibo_arr[i - 1] + fibo_arr[i - 2]) % 10**9)
-
-if num < 0:
-    if abs_num % 2 == 0:
-        print(-1)
-    else:
-        print(1)
-elif num == 0:
-    print(0)
-else:
-    print(1)
-print(fibo_arr[abs_num])
