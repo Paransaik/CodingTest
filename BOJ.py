@@ -127,23 +127,21 @@ import sys
 #
 # print(*output[::-1])
 
-# BOJ 1003
+# BOJ 15624
+# c = int(input())
+# fibo_arr = [0, 1]
+#
+# for i in range(2, c + 1):
+#     fibo_arr.append((fibo_arr[i - 1] + fibo_arr[i - 2]) % 1000000007)
+#
+# print(fibo_arr[c])
+
+# BOJ 17175
 n = int(input())
-fibo_arr = [0 for i in range(42)]
-fibo_arr[-1], fibo_arr[0], fibo_arr[1] = 1, 0, 1
+fibo_arr = [1, 1]
 
-for _ in range(n):
-    c = int(input())
-    def fibo(x):
-        if x == 0:
-            return 0
-        elif x == 1:
-            return 1
-        elif fibo_arr[x] == 0:
-            fibo_arr[x] = fibo(x-1) + fibo(x-2)
-        return fibo_arr[x]
+for i in range(2, n + 1):
+    fibo_arr.append(1 + (fibo_arr[i - 1] + fibo_arr[i - 2]) % 1000000007)
 
-    fibo(c)
-    print(fibo_arr[c-1], fibo_arr[c])
-
+print(fibo_arr[n])
 
