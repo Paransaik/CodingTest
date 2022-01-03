@@ -1,15 +1,8 @@
-# BOJ 9711
-fibo = [1, 1]
-for i in range(2, 10001):
-    fibo.append(fibo[i-1] + fibo[i-2])
-
-num = int(input())
-
-for j in range(num):
-    p, q = map(int, input().split())
-    convert = fibo[p-1] % q
-    print('Case #{}: {}'.format(j+1, convert))
-
+# BOJ 14495
+fibo = [1, 1, 1]
+for i in range(3, 116):
+    fibo.append(fibo[i-1] + fibo[i-3])
+print(fibo[int(input())-1])
 
 # BOJ 1662 fail
 import sys
