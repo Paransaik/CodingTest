@@ -1,7 +1,3 @@
-# BOJ 10757
-import sys
-print(sum(map(int, sys.stdin.readline().split())))
-
 # # BOJ 1662 fail
 # import sys
 # # a = sys.stdin.readline()
@@ -34,20 +30,27 @@ print(sum(map(int, sys.stdin.readline().split())))
 #         print(stack)
 # print(len(stack[0]))
 
-# BOJ 1002 ~ing
-# 0 0 3 1 2 1
-# import sys
-#
-# a = int(input())
-# for i in range(a):
-#     result = []
-#     x1, y1, r1, x2, y2, r2 = map(int, sys.stdin.readline().split())
-#     for i in range(y1-r1, y2+r2+1):
-#         for j in range(x1-r1, x2+r2+1):
-#             if ((x1 - j)**2 + (y1 - i)**2)**0.5 == r1 and ((x2 - j)**2 + (y2 - i)**2)**0.5 == r2:
-#                 result.append([i, j])
-#     print(len(result), result)
+# BOJ 1002
 
+import sys
+
+a = int(input())
+for i in range(a):
+    result = []
+    x1, y1, r1, x2, y2, r2 = map(int, sys.stdin.readline().split())
+
+    distance = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+    r = r1 + r2
+
+    if r1 == r2 and distance == 0:
+        cross = -1
+    elif abs(r1 - r2) == distance or r1 + r2 == distance:
+        cross = 1
+    elif abs(r1 - r2) < distance < r1 + r2:
+        cross = 2
+    else:
+        cross = 0
+    print(cross)
 # BOJ 17298
 # 20
 # 5 4 6  9  8 41 3 2 1 5 4 7  5  52 4 5  5  4 5  45
