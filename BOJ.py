@@ -1,10 +1,22 @@
+# BOJ 10425
+count = int(input())
+
+for i in range(count):
+    fibo = [0, 1, 1]
+    i = 2
+    n = int(input())
+    while fibo[i] != n:
+        fibo.append(fibo[i] + fibo[i-1])
+        i += 1
+    print(i)
+
 # # BOJ 1662 fail
 # import sys
 # # a = sys.stdin.readline()
-# a = "33(562(71(9)))"
-# # a = "3(3(3(2(2)2(2))))"  # 108
+# # a = "33(562(71(9)))"  # 19
+# a = "3(3(3(2(2)2(1))))"  # 108
 # # a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
-# # a = "123(3)"
+# # a = "123(3)"  # 5
 # # a = "10342(76)"
 # # a = "0(0)"
 # board = a.split('(')
@@ -30,27 +42,6 @@
 #         print(stack)
 # print(len(stack[0]))
 
-# BOJ 1002
-
-import sys
-
-a = int(input())
-for i in range(a):
-    result = []
-    x1, y1, r1, x2, y2, r2 = map(int, sys.stdin.readline().split())
-
-    distance = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
-    r = r1 + r2
-
-    if r1 == r2 and distance == 0:
-        cross = -1
-    elif abs(r1 - r2) == distance or r1 + r2 == distance:
-        cross = 1
-    elif abs(r1 - r2) < distance < r1 + r2:
-        cross = 2
-    else:
-        cross = 0
-    print(cross)
 # BOJ 17298
 # 20
 # 5 4 6  9  8 41 3 2 1 5 4 7  5  52 4 5  5  4 5  45
