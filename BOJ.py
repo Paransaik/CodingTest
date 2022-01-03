@@ -1,17 +1,18 @@
-# BOJ 2161
-from collections import deque
-n = int(input())
-queue = deque([i+1 for i in range(n)])
-while len(queue) != 1:
-    print(queue.popleft(), end=" ")
-    queue.append(queue.popleft())
-print(*queue)
+# BOJ 14856
+fibo = [1, 2]
+for i in range(2, 82):
+    fibo.append(fibo[i-1] + fibo[i-2])
 
-# for i in range(n):
-#     for j in range(m):
-#         board[i][j] = board[i-1][j] + board[i][j-1] + 1
-# print(board)
-# print(board[n][m])
+n = int(input())
+i = 81
+covert = []
+while n != 0:
+    if n >= fibo[i]:
+        n -= fibo[i]
+        covert.append(fibo[i])
+    i -= 1
+print(len(covert))
+print(*covert[::-1])
 
 # BOJ 1662 fail
 import sys
