@@ -1,20 +1,14 @@
-# BOJ 9009
-fibo = [0, 1]
-for i in range(2, 45):
+# BOJ 9711
+fibo = [1, 1]
+for i in range(2, 10001):
     fibo.append(fibo[i-1] + fibo[i-2])
 
 num = int(input())
 
 for j in range(num):
-    stack = []
-    fibo_num = int(input())
-    count = 44
-    while count > 0:
-        if fibo_num >= fibo[count]:
-            fibo_num -= fibo[count]
-            stack.append(fibo[count])
-        count -= 1
-    print(*stack[::-1])
+    p, q = map(int, input().split())
+    convert = fibo[p-1] % q
+    print('Case #{}: {}'.format(j+1, convert))
 
 
 # BOJ 1662 fail
