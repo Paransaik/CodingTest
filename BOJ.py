@@ -1,9 +1,9 @@
-# BOJ 2164
+# BOJ 2161
 from collections import deque
 n = int(input())
 queue = deque([i+1 for i in range(n)])
 while len(queue) != 1:
-    queue.popleft()
+    print(queue.popleft(), end=" ")
     queue.append(queue.popleft())
 print(*queue)
 
