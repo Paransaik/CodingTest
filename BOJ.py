@@ -1,28 +1,16 @@
-# BOJ 14856
-fibo = [1, 2]
-for i in range(2, 82):
-    fibo.append(fibo[i-1] + fibo[i-2])
-
-n = int(input())
-i = 81
-covert = []
-while n != 0:
-    if n >= fibo[i]:
-        n -= fibo[i]
-        covert.append(fibo[i])
-    i -= 1
-print(len(covert))
-print(*covert[::-1])
-
-# BOJ 1662 fail
+# BOJ 10757
 import sys
-# a = sys.stdin.readline()
+print(sum(map(int, sys.stdin.readline().split())))
+
+# # BOJ 1662 fail
+# import sys
+# # a = sys.stdin.readline()
 # a = "33(562(71(9)))"
-# a = "3(3(3(2(2)2(2))))"  # 108
-# a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
-# a = "123(3)"
-# a = "10342(76)"
-# a = "0(0)"
+# # a = "3(3(3(2(2)2(2))))"  # 108
+# # a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
+# # a = "123(3)"
+# # a = "10342(76)"
+# # a = "0(0)"
 # board = a.split('(')
 # stack = []
 # intstack = []
@@ -30,45 +18,23 @@ import sys
 # for string in board:
 #     stack.append(string)
 #
-# if stack[-1].find(')') > -1:
-#     word1 = stack.pop()
-#     cursor = 0
-#     for i in range(len(word1)):
-#         if word1[cursor] == ')':
-#             b = len(word1[:cursor])
-#             break
-#         cursor += 1
-#     word2 = stack.pop()
-#     pre = len(word2[:-1])
-#     post = int(word2[-1])
-#     stack.append(pre + str(post * b) + word1[cursor+1:])
-#
 # while len(stack) != 1:
 #     if stack[-1].find(')') > -1:
 #         word1 = stack.pop()
 #         cursor = 0
 #         for i in range(len(word1)):
 #             if word1[cursor] == ')':
-#                 b = int(word1[:cursor])
+#                 b = word1[:cursor]
 #                 break
 #             cursor += 1
 #         word2 = stack.pop()
-#         pre = len(word2[:-1])
+#         pre = word2[:-1]
 #         post = int(word2[-1])
 #         stack.append(str(pre + (post * b)) + word1[cursor+1:])
 #         print(stack)
-#
-#
-# print(stack[0])
+# print(len(stack[0]))
 
-# 11720
-# a = int(input())
-#
-# for i in range(a):
-#     c += int(b[i])
-# print(c)
-
-# BOJ 1002
+# BOJ 1002 ~ing
 # 0 0 3 1 2 1
 # import sys
 #
