@@ -1,19 +1,20 @@
-# BOJ 6504
-fibo = [1, 2]
-for i in range(2, 23):
+# BOJ 9009
+fibo = [0, 1]
+for i in range(2, 45):
     fibo.append(fibo[i-1] + fibo[i-2])
 
 num = int(input())
+
 for j in range(num):
-    kilo = int(input())
-    count = 22
-    mile = 0
+    stack = []
+    fibo_num = int(input())
+    count = 44
     while count > 0:
-        if kilo >= fibo[count]:
-            kilo -= fibo[count]
-            mile += fibo[count-1]
+        if fibo_num >= fibo[count]:
+            fibo_num -= fibo[count]
+            stack.append(fibo[count])
         count -= 1
-    print(mile)
+    print(*stack[::-1])
 
 
 # BOJ 1662 fail
