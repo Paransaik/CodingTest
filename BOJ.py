@@ -1,4 +1,4 @@
-# BOJ 10845
+# BOJ 18258
 import sys
 from collections import deque
 num = int(input())
