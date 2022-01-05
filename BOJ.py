@@ -1,34 +1,22 @@
-# BOJ 18258
+# BOJ 11866
 import sys
 from collections import deque
-num = int(input())
-queue = deque()
-for i in range(num):
-    oper = list(sys.stdin.readline().split())
-    if oper[0] == 'push':
-        queue.append(oper[1])
-    elif oper[0] == 'pop':
-        if queue:
-            print(queue.popleft())
-        else:
-            print(-1)
-    elif oper[0] == 'size':
-        print(len(queue))
-    elif oper[0] == 'empty':
-        if queue:
-            print(0)
-        else:
-            print(1)
-    elif oper[0] == 'front':
-        if queue:
-            print(queue[0])
-        else:
-            print(-1)
-    elif oper[0] == 'back':
-        if queue:
-            print(queue[-1])
-        else:
-            print(-1)
+n, k = map(int, sys.stdin.readline().split())
+queue = deque([i for i in range(1, n + 1)])
+result = []
+i = 1
+while len(queue) != 0:
+    if i == k:
+        result.append(queue.popleft())
+        i = 1
+    else:
+        queue.append(queue.popleft())
+        i += 1
+
+print('<', end='')
+print(', '.join(map(str, result)), end ='')
+print('>')
+
 
 # # BOJ 1662 fail
 # import sys
