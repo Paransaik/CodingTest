@@ -1,22 +1,15 @@
-# BOJ 14494
-n, m = map(int, input().split())
-board = [[0 for i in range(m)] for j in range(n)]
-
-# 맨 윗줄 1
-for m in range(m):
-    board[0][m] = 1
-# 맨 오른 줄 1
-for n in range(n):
-    board[n][0] = 1
-
-for i in range(1, n + 1):
-    for j in range(1, m + 1):
-        board[i][j] = (board[i - 1][j] + board[i][j - 1] + board[i - 1][j - 1]) % (10 ** 9 + 7)
-
-print(board[n][m])
-
-for row in board:
-    print(*row)
+# BOJ 8958
+num = int(input())
+for i in range(num):
+    sum = 0
+    strings = list(input().split('X'))
+    for w in strings:
+        i = 0
+        for c in w:
+            if c == 'O':
+                i += 1
+            sum += i
+    print(sum)
 
 # # BOJ 1662 fail
 # import sys
