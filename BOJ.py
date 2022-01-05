@@ -5,7 +5,7 @@ n, k = map(int, sys.stdin.readline().split())
 queue = deque([i for i in range(1, n + 1)])
 result = []
 i = 1
-while len(queue) != 0:
+while queue:
     if i == k:
         result.append(queue.popleft())
         i = 1
@@ -13,9 +13,7 @@ while len(queue) != 0:
         queue.append(queue.popleft())
         i += 1
 
-print('<', end='')
-print(', '.join(map(str, result)), end ='')
-print('>')
+print('<' + ', '.join(map(str, result)) + '>')
 
 
 # # BOJ 1662 fail
