@@ -1,20 +1,23 @@
-# BOJ 11866
+# BOJ 9610
 import sys
-from collections import deque
-n, k = map(int, sys.stdin.readline().split())
-queue = deque([i for i in range(1, n + 1)])
-result = []
-i = 1
-while queue:
-    if i == k:
-        result.append(queue.popleft())
-        i = 1
+num = int(input())
+listed = [0 for i in range(5)]
+for i in range(num):
+    x, y = map(int, sys.stdin.readline().split())
+    if x > 0 and y > 0:
+        listed[0] += 1
+    elif x < 0 and y > 0:
+        listed[1] += 1
+    elif x < 0 and y < 0:
+        listed[2] += 1
+    elif x > 0 and y < 0:
+        listed[3] += 1
     else:
-        queue.append(queue.popleft())
-        i += 1
+        listed[4] += 1
 
-print('<' + ', '.join(map(str, result)) + '>')
-
+for i in range(4):
+    print('Q{}: {}'.format(i+1, listed[i]))
+print('AXIS: {}'.format(listed[4]))
 
 # # BOJ 1662 fail
 # import sys
