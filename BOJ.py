@@ -1,23 +1,13 @@
-# BOJ 9610
+# BOJ 2675
 import sys
 num = int(input())
-listed = [0 for i in range(5)]
-for i in range(num):
-    x, y = map(int, sys.stdin.readline().split())
-    if x > 0 and y > 0:
-        listed[0] += 1
-    elif x < 0 and y > 0:
-        listed[1] += 1
-    elif x < 0 and y < 0:
-        listed[2] += 1
-    elif x > 0 and y < 0:
-        listed[3] += 1
-    else:
-        listed[4] += 1
 
-for i in range(4):
-    print('Q{}: {}'.format(i+1, listed[i]))
-print('AXIS: {}'.format(listed[4]))
+for i in range(num):
+    p = ''
+    count, s = sys.stdin.readline().split()
+    for w in s:
+        p += ''.join(w * int(count))
+    print(p)
 
 # # BOJ 1662 fail
 # import sys
