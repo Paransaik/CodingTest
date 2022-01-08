@@ -1,13 +1,23 @@
-# BOJ 2675
-import sys
-num = int(input())
+# BOJ 1157
+word = input().upper()
+alpalist = [0 for i in range(26)]
 
-for i in range(num):
-    p = ''
-    count, s = sys.stdin.readline().split()
-    for w in s:
-        p += ''.join(w * int(count))
-    print(p)
+for c in word:
+    alpalist[ord(c)-65] += 1
+
+alpamax = 0
+index = 0
+
+for i in range(26):
+    if alpamax < alpalist[i]:
+        alpamax = alpalist[i]
+        index = i
+
+alpalist.sort()
+if alpalist[-1] == alpalist[-2]:
+    print("?")
+else:
+    print(chr(index+65))
 
 # # BOJ 1662 fail
 # import sys
