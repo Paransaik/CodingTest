@@ -1,23 +1,36 @@
-# BOJ 1157
-word = input().upper()
-alpalist = [0 for i in range(26)]
+# BOJ 1011
+# num = int(input())
+# for i in range(num):
+#     count = 0
+#     x, y = map(int, input().split())
+#
+#     sequence = 0
+#
+#     while x != y:
+#         sequence += 1
+#         y -= sequence
+#         count += 1
+#
+#     print(x, y, sequence, count)
 
-for c in word:
-    alpalist[ord(c)-65] += 1
+# BOJ 11653
+import sys
+n = int(sys.stdin.readline())
+sieve = [True] * (n+1)
 
-alpamax = 0
-index = 0
+m = int(n ** 0.5)
+for i in range(2, m + 1):
+    if sieve[i] == True:
+        for j in range(i+i, n, i):
+            sieve[j] = False
 
-for i in range(26):
-    if alpamax < alpalist[i]:
-        alpamax = alpalist[i]
-        index = i
-
-alpalist.sort()
-if alpalist[-1] == alpalist[-2]:
-    print("?")
-else:
-    print(chr(index+65))
+k = 2
+while n != 1:
+    if sieve[k] == True and n % k == 0:
+        n //= k
+        print(k)
+    else:
+        k += 1
 
 # # BOJ 1662 fail
 # import sys
