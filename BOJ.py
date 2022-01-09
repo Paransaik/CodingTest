@@ -1,36 +1,16 @@
-# BOJ 1011
-# num = int(input())
-# for i in range(num):
-#     count = 0
-#     x, y = map(int, input().split())
-#
-#     sequence = 0
-#
-#     while x != y:
-#         sequence += 1
-#         y -= sequence
-#         count += 1
-#
-#     print(x, y, sequence, count)
-
-# BOJ 11653
+# BOJ 1929
 import sys
-n = int(sys.stdin.readline())
-sieve = [True] * (n+1)
+n, m = map(int, sys.stdin.readline().split())
+sieve = [False, False] + [True] * (m-1)
 
-m = int(n ** 0.5)
-for i in range(2, m + 1):
-    if sieve[i] == True:
-        for j in range(i+i, n, i):
+for i in range(2, int(m ** 0.5) + 1):
+    if sieve[i]:
+        for j in range(i+i, m+1, i):
             sieve[j] = False
 
-k = 2
-while n != 1:
-    if sieve[k] == True and n % k == 0:
-        n //= k
+for k in range(n, m+1):
+    if sieve[k]:
         print(k)
-    else:
-        k += 1
 
 # # BOJ 1662 fail
 # import sys
