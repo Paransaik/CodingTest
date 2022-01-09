@@ -1,7 +1,9 @@
-# BOJ 1929
-import sys
-n, m = map(int, sys.stdin.readline().split())
+# BOJ 2581
+n = int(input())
+m = int(input())
+
 sieve = [False, False] + [True] * (m-1)
+prime = []
 
 for i in range(2, int(m ** 0.5) + 1):
     if sieve[i]:
@@ -10,7 +12,13 @@ for i in range(2, int(m ** 0.5) + 1):
 
 for k in range(n, m+1):
     if sieve[k]:
-        print(k)
+        prime.append(k)
+
+if prime:
+    print(sum(prime))
+    print(prime[0])
+else:
+    print(-1)
 
 # # BOJ 1662 fail
 # import sys
