@@ -1,24 +1,23 @@
-# BOJ 2581
-n = int(input())
-m = int(input())
-
+# BOJ 1978
+import sys
+num = int(input())
+prime = list(map(int, sys.stdin.readline().split()))
+m = 999
 sieve = [False, False] + [True] * (m-1)
-prime = []
-
 for i in range(2, int(m ** 0.5) + 1):
     if sieve[i]:
         for j in range(i+i, m+1, i):
             sieve[j] = False
 
-for k in range(n, m+1):
-    if sieve[k]:
-        prime.append(k)
+count = 0
+for j in range(1000):
+    for p in prime:
+        if sieve[j]:
+            if j == p:
+                count += 1
 
-if prime:
-    print(sum(prime))
-    print(prime[0])
-else:
-    print(-1)
+print(count)
+
 
 # # BOJ 1662 fail
 # import sys
