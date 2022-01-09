@@ -1,23 +1,22 @@
-# BOJ 1978
+# BOJ 4948
 import sys
-num = int(input())
-prime = list(map(int, sys.stdin.readline().split()))
-m = 999
-sieve = [False, False] + [True] * (m-1)
+m = 2 * 123456
+sieve = [False, False] + [True] * (m - 1)
 for i in range(2, int(m ** 0.5) + 1):
     if sieve[i]:
-        for j in range(i+i, m+1, i):
+        for j in range(i + i, m + 1, i):
             sieve[j] = False
 
-count = 0
-for j in range(1000):
-    for p in prime:
-        if sieve[j]:
-            if j == p:
-                count += 1
+while True:
+    count = 0
+    num = int(input())
+    if num == 0:
+        break
 
-print(count)
-
+    for t in sieve[num + 1:(2 * num) + 1]:
+        if t:
+            count += 1
+    print(count)
 
 # # BOJ 1662 fail
 # import sys
