@@ -1,22 +1,29 @@
-# BOJ 4948
+# BOJ 9020
 import sys
-m = 2 * 123456
+m = 9999
 sieve = [False, False] + [True] * (m - 1)
 for i in range(2, int(m ** 0.5) + 1):
     if sieve[i]:
         for j in range(i + i, m + 1, i):
             sieve[j] = False
 
-while True:
-    count = 0
-    num = int(input())
-    if num == 0:
-        break
+num = int(input())
 
-    for t in sieve[num + 1:(2 * num) + 1]:
-        if t:
-            count += 1
-    print(count)
+for _ in range(num):
+    result = []
+
+    gold = int(input())
+    x = gold // 2
+    y = x
+    while True:
+        if sieve[x] and sieve[y]:
+            print(x, y)
+            break
+        else:
+            x -= 1
+            y += 1
+
+    # print(result[-1])
 
 # # BOJ 1662 fail
 # import sys
