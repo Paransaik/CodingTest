@@ -1,27 +1,22 @@
-# BOJ 9020
+# BOJ 1816
 import sys
-m = 9999
+m = 10**12
 sieve = [False, False] + [True] * (m - 1)
 for i in range(2, int(m ** 0.5) + 1):
     if sieve[i]:
         for j in range(i + i, m + 1, i):
             sieve[j] = False
 
-num = int(input())
-
-for _ in range(num):
-    result = []
-
-    gold = int(input())
-    x = gold // 2
-    y = x
-    while True:
-        if sieve[x] and sieve[y]:
-            print(x, y)
-            break
-        else:
-            x -= 1
-            y += 1
+index = 10**12
+for i in range(10**12):
+    if sieve[i]:
+        print(i)
+# num = int(input())
+#
+# for _ in range(num):
+#     result = []
+#
+#     gold = int(input())
 
     # print(result[-1])
 
