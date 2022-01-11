@@ -1,24 +1,24 @@
 # BOJ 1816
-import sys
-m = 10**12
+m = 10**6
 sieve = [False, False] + [True] * (m - 1)
 for i in range(2, int(m ** 0.5) + 1):
     if sieve[i]:
         for j in range(i + i, m + 1, i):
             sieve[j] = False
 
-index = 10**12
-for i in range(10**12):
-    if sieve[i]:
-        print(i)
-# num = int(input())
-#
-# for _ in range(num):
-#     result = []
-#
-#     gold = int(input())
-
-    # print(result[-1])
+num = int(input())
+for _ in range(num):
+    flog = 0
+    prime = int(input())
+    for i in range(10 ** 6):
+        if sieve[i]:
+            if prime % i == 0:
+                flog = 1
+                break
+    if flog == 0:
+        print("YES")
+    else:
+        print("NO")
 
 # # BOJ 1662 fail
 # import sys
