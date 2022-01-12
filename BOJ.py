@@ -1,24 +1,26 @@
-# BOJ 1816
-m = 10**6
+# BOJ 1124
+count = 0
+m = 10**5
 sieve = [False, False] + [True] * (m - 1)
 for i in range(2, int(m ** 0.5) + 1):
     if sieve[i]:
         for j in range(i + i, m + 1, i):
             sieve[j] = False
 
-num = int(input())
-for _ in range(num):
-    flog = 0
-    prime = int(input())
-    for i in range(10 ** 6):
-        if sieve[i]:
-            if prime % i == 0:
-                flog = 1
-                break
-    if flog == 0:
-        print("YES")
-    else:
-        print("NO")
+a, b = map(int, input().split())
+for p in range(a, b+1):
+    prime = []
+    i = 2
+    if not sieve[p]:
+        while p != 1:
+            if p % i == 0:
+                p //= i
+                prime.append(i)
+            else:
+                i += 1
+        if sieve[len(prime)]:
+            count += 1
+print(count)
 
 # # BOJ 1662 fail
 # import sys
