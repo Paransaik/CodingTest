@@ -1,26 +1,30 @@
-# BOJ 1124
-count = 0
-m = 10**5
-sieve = [False, False] + [True] * (m - 1)
-for i in range(2, int(m ** 0.5) + 1):
-    if sieve[i]:
-        for j in range(i + i, m + 1, i):
-            sieve[j] = False
+# BOJ 2312
 
-a, b = map(int, input().split())
-for p in range(a, b+1):
-    prime = []
+# m = 10**5
+# sieve = [False, False] + [True] * (m - 1)
+# for i in range(2, int(m ** 0.5) + 1):
+#     if sieve[i]:
+#         for j in range(i + i, m + 1, i):
+#             sieve[j] = False
+
+num = int(input())
+for _ in range(num):
+    natural = int(input())
+    result = []
+    count = 0
     i = 2
-    if not sieve[p]:
-        while p != 1:
-            if p % i == 0:
-                p //= i
-                prime.append(i)
-            else:
-                i += 1
-        if sieve[len(prime)]:
+    while natural != 1:
+        if natural % i == 0:
+            natural //= i
             count += 1
-print(count)
+        else:
+            if count != 0:
+                result.append([i, count])
+                count = 0
+            i += 1
+    result.append([i, count])
+    for re in result:
+        print(*re)
 
 # # BOJ 1662 fail
 # import sys
