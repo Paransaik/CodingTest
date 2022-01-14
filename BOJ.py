@@ -1,30 +1,31 @@
-# BOJ 2312
+# BOJ 1373
+print(oct(int(input(), 2))[2:])
 
-# m = 10**5
+# BOJ 16563
+# ~False, ~0 = -1
+# ~True, ~1 = -2
+# ~2 = -3
+# import sys
+# dummy = int(input())
+# natural = list(map(int, sys.stdin.readline().split()))
+# m = (10**6) * 5
 # sieve = [False, False] + [True] * (m - 1)
 # for i in range(2, int(m ** 0.5) + 1):
 #     if sieve[i]:
 #         for j in range(i + i, m + 1, i):
-#             sieve[j] = False
+#             if ~sieve[j] > -3:
+#                 sieve[j] = i
+#
+# for nat in natural:
+#     while nat != 1:
+#         if sieve[nat] == True:
+#             print(nat, end=' ')
+#             break
+#         else:
+#             print(sieve[nat], end=' ')
+#             nat //= sieve[nat]
+#     print()
 
-num = int(input())
-for _ in range(num):
-    natural = int(input())
-    result = []
-    count = 0
-    i = 2
-    while natural != 1:
-        if natural % i == 0:
-            natural //= i
-            count += 1
-        else:
-            if count != 0:
-                result.append([i, count])
-                count = 0
-            i += 1
-    result.append([i, count])
-    for re in result:
-        print(*re)
 
 # # BOJ 1662 fail
 # import sys
