@@ -1,5 +1,6 @@
-# BOJ 1373
-print(oct(int(input(), 2))[2:])
+# BOJ 7287
+print(136)
+print("haramel49")
 
 # BOJ 16563
 # ~False, ~0 = -1
