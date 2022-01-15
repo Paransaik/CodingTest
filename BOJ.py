@@ -1,32 +1,23 @@
-# BOJ 7287
-print(136)
-print("haramel49")
-
 # BOJ 16563
-# ~False, ~0 = -1
-# ~True, ~1 = -2
-# ~2 = -3
-# import sys
-# dummy = int(input())
-# natural = list(map(int, sys.stdin.readline().split()))
-# m = (10**6) * 5
-# sieve = [False, False] + [True] * (m - 1)
-# for i in range(2, int(m ** 0.5) + 1):
-#     if sieve[i]:
-#         for j in range(i + i, m + 1, i):
-#             if ~sieve[j] > -3:
-#                 sieve[j] = i
-#
-# for nat in natural:
-#     while nat != 1:
-#         if sieve[nat] == True:
-#             print(nat, end=' ')
-#             break
-#         else:
-#             print(sieve[nat], end=' ')
-#             nat //= sieve[nat]
-#     print()
+import sys
+dummy = int(input())
+natural = list(map(int, sys.stdin.readline().split()))
+m = max(natural)
+sieve = [0] + [1] * m
+equal = [i for i in range(m+1)]
 
+for i in range(2, int(m ** 0.5) + 1):
+    if sieve[i] == 1:
+        for j in range(i + i, m + 1, i):
+            sieve[j] = i
+            if equal[j] == j:
+                equal[j] = i
+
+for nat in natural:
+    while nat != 1:
+        print(equal[nat], end=' ')
+        nat //= equal[nat]
+    print()
 
 # # BOJ 1662 fail
 # import sys
