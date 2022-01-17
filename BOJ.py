@@ -1,23 +1,32 @@
-# BOJ 16563
-import sys
-dummy = int(input())
-natural = list(map(int, sys.stdin.readline().split()))
-m = max(natural)
-sieve = [0] + [1] * m
-equal = [i for i in range(m+1)]
+# 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
+# $ git commit --amend
 
-for i in range(2, int(m ** 0.5) + 1):
-    if sieve[i] == 1:
-        for j in range(i + i, m + 1, i):
-            sieve[j] = i
-            if equal[j] == j:
-                equal[j] = i
+# BOJ 11650
+count = int(input())
+coordinate = []
+for _ in range(count):
+    coordinate.append(list(map(int, input().split())))
+for coord in sorted(coordinate):
+    print(*coord)
 
-for nat in natural:
-    while nat != 1:
-        print(equal[nat], end=' ')
-        nat //= equal[nat]
-    print()
+# BOJ 2231
+# num = input()
+# a = str(num)
+# for n in num:
+#     sum_num = a
+#     while b != 0:
+#         sum_num = sum_num + (b % 10)
+#         b //= 10
+#
+#     a += 1
+#
+# if sum_num == num:
+#     print(a)
+#     break
+# else:
+#     print(0)
+
+
 
 # # BOJ 1662 fail
 # import sys
@@ -30,7 +39,7 @@ for nat in natural:
 # # a = "0(0)"
 # board = a.split('(')
 # stack = []
-# intstack = []
+# int_stack = []
 #
 # for string in board:
 #     stack.append(string)
