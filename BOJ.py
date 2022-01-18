@@ -1,30 +1,22 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ 11650
-count = int(input())
-coordinate = []
-for _ in range(count):
-    coordinate.append(list(map(int, input().split())))
-for coord in sorted(coordinate):
-    print(*coord)
-
 # BOJ 2231
-# num = input()
-# a = str(num)
-# for n in num:
-#     sum_num = a
-#     while b != 0:
-#         sum_num = sum_num + (b % 10)
-#         b //= 10
-#
-#     a += 1
-#
-# if sum_num == num:
-#     print(a)
-#     break
-# else:
-#     print(0)
+num = int(input())
+a = 1
+sum_num = 0
+for i in range(1, num):
+    sum_num = i
+    result = i
+    for _ in range(len(str(num))):
+        sum_num += (i % 10)
+        i //= 10
+    if sum_num == num:
+        print(result)
+        break
+
+if sum_num != num:
+    print(0)
 
 
 
