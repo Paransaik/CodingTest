@@ -1,57 +1,81 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ 2231
-num = int(input())
-a = 1
-sum_num = 0
-for i in range(1, num):
-    sum_num = i
-    result = i
-    for _ in range(len(str(num))):
-        sum_num += (i % 10)
-        i //= 10
-    if sum_num == num:
-        print(result)
-        break
-
-if sum_num != num:
-    print(0)
-
-
-
-# # BOJ 1662 fail
-# import sys
+# BOJ 6749
+a = int(input())
+b = int(input())
+print(b-a+b)
+# BOJ 1662 fail
+# a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
+# a = "123(3)"  # 5
+# a = "10342(76)"
+# a = "0(0)"
+import sys
 # # a = sys.stdin.readline()
 # # a = "33(562(71(9)))"  # 19
-# a = "3(3(3(2(2)2(1))))"  # 108
-# # a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
-# # a = "123(3)"  # 5
-# # a = "10342(76)"
-# # a = "0(0)"
+# a = "3(3(3(3(2)2(1))))"  # 108
+# # a = '123'
 # board = a.split('(')
 # stack = []
 # int_stack = []
 #
-# for string in board:
-#     stack.append(string)
 #
-# while len(stack) != 1:
-#     if stack[-1].find(')') > -1:
-#         word1 = stack.pop()
+# fund = board.pop()
+# b = ''
+# cursor = 0
+# for _ in range(len(fund)):
+#     if fund[cursor] == ')':
+#         b = fund[:cursor]  # b 는 )앞 숫자들
+#         break
+#     cursor += 1
+#
+# result = len(str(b))  # stack[-1]
+# print(result)
+# print('stack', stack)
+# print('board', board)
+# for string in board[::-1]:
+#     if string.find(')') > -1:  # ')'가 있으면
 #         cursor = 0
-#         for i in range(len(word1)):
-#             if word1[cursor] == ')':
-#                 b = word1[:cursor]
+#         for i in range(len(string)):
+#             if string[cursor] == ')':
+#                 b = string[:cursor]  # b 는 )앞 숫자들
 #                 break
 #             cursor += 1
-#         word2 = stack.pop()
-#         pre = word2[:-1]
-#         post = int(word2[-1])
-#         stack.append(str(pre + (post * b)) + word1[cursor+1:])
-#         print(stack)
-# print(len(stack[0]))
+#             word = board
+#             print(word)
+#             if len(word) > 1:
+#                 result = len(word[:-1]) + (int(word[-1]) * len(b)) + (int(string[cursor+1:]) * result)
+#             else:
+#                 result = (int(word) * len(b)) + (int(string[cursor+1:]) * result)  # b = 2, result = 1
+#                 print('result', result)
+#     else:  # ')'가 없으면
+#         if len(string) > 1:  # 2자리 수
+#             result = result * string[-1] + len(string[:-1])
+#         else:  # 한자리 수
+#             result *= int(string)
+#
+# print(result)
+'''
+for string in board:
+    stack.append(string)
+while len(stack) != 1:
+    if stack[-1].find(')') > -1:
+        print(stack)
+        word1 = stack.pop()
+        cursor = 0
+        for i in range(len(word1)):
+            if word1[cursor] == ')':
+                b = word1[:cursor]  # b 는 )앞 숫자들
+                break
+            cursor += 1
+        word2 = stack.pop()
+        pre = word2[:-1]  # 곱할 숫자를 제외한 수
+        post = int(word2[-1])  # 곱할 숫자
 
+        stack.append(str(pre + (post * b)) + word1[cursor+1:])
+
+print(len(stack[0]))
+'''
 # BOJ 17298
 # 20
 # 5 4 6  9  8 41 3 2 1 5 4 7  5  52 4 5  5  4 5  45
