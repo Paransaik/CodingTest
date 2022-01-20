@@ -1,60 +1,33 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ 6749
-a = int(input())
-b = int(input())
-print(b-a+b)
+# BOJ 10809
+string = input()
+alphabet = [-1 for i in range(26)]
+
+for i in range(26):
+    alphabet[i] = string.find(chr(ord('a') + i))
+print(*alphabet)
+
 # BOJ 1662 fail
-# a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
-# a = "123(3)"  # 5
-# a = "10342(76)"
-# a = "0(0)"
-import sys
-# # a = sys.stdin.readline()
-# # a = "33(562(71(9)))"  # 19
-# a = "3(3(3(3(2)2(1))))"  # 108
-# # a = '123'
-# board = a.split('(')
-# stack = []
-# int_stack = []
-#
-#
-# fund = board.pop()
-# b = ''
-# cursor = 0
-# for _ in range(len(fund)):
-#     if fund[cursor] == ')':
-#         b = fund[:cursor]  # b 는 )앞 숫자들
-#         break
-#     cursor += 1
-#
-# result = len(str(b))  # stack[-1]
-# print(result)
-# print('stack', stack)
-# print('board', board)
-# for string in board[::-1]:
-#     if string.find(')') > -1:  # ')'가 있으면
-#         cursor = 0
-#         for i in range(len(string)):
-#             if string[cursor] == ')':
-#                 b = string[:cursor]  # b 는 )앞 숫자들
-#                 break
-#             cursor += 1
-#             word = board
-#             print(word)
-#             if len(word) > 1:
-#                 result = len(word[:-1]) + (int(word[-1]) * len(b)) + (int(string[cursor+1:]) * result)
-#             else:
-#                 result = (int(word) * len(b)) + (int(string[cursor+1:]) * result)  # b = 2, result = 1
-#                 print('result', result)
-#     else:  # ')'가 없으면
-#         if len(string) > 1:  # 2자리 수
-#             result = result * string[-1] + len(string[:-1])
-#         else:  # 한자리 수
-#             result *= int(string)
-#
-# print(result)
+'''
+a = "10342(76)"  # 8
+a = "0(0)"  # 0
+a = "33(562(71(9)))"  # 19
+a = "3(3(3(2(2)2(1))))"  # 108
+a = "123(3)"  # 5
+a = "123"
+a = "1()66(5)"  # 7
+a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
+a = 3(5)  # 3
+a = 3(5)1  # 4
+a = 3(5(1))  # 15
+a = 3(5(1))1  # 16
+a = 4(3(5(1)))  # 60
+a = 4(3(5(1)))1  # 61
+a = 15(22)13(92(1111)42(222))  #60
+a = 15(22)13(92(1111)42(222))123(1)45  # 67
+'''
 '''
 for string in board:
     stack.append(string)
