@@ -1,13 +1,13 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ 11651
+# BOJ 1181
 count = int(input())
 coordinate = []
 for _ in range(count):
-    coordinate.append(list(map(int, input().split())))
-for coord in sorted(coordinate, key=lambda x: (x[1], x[0])):
-    print(*coord)
+    coordinate.append(input())
+for coord in sorted(list(set(coordinate)), key=lambda x: (len(x), x)):
+    print(coord)
 
 '''
 1 -1
