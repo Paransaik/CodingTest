@@ -1,17 +1,9 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ 18870
-import sys
-dummy = int(input())
-coordinate = []
-lst = list(map(int, sys.stdin.readline().split()))
-sorted_lst = sorted(set(lst))
-dit = {}
-for i, v in enumerate(sorted_lst):
-    dit[v] = i
-for i in range(len(lst)):
-    print(dit[lst[i]], end=' ')
+# BOJ 1085
+x, y, w, h = map(int, input().split())
+print(min(w-x, h-y, x, y))
 
 '''
 # BOJ 1662 fail
