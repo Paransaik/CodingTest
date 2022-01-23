@@ -1,67 +1,58 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ 10814
-count = int(input())
+# BOJ 18870
+import sys
+dummy = int(input())
 coordinate = []
-for _ in range(count):
-    coordinate.append(input().split())
-for coord in sorted(coordinate, key=lambda x: int(x[0])):
-    print(*coord)
-
-'''
-1 -1
-1 2
-2 2
-3 3
-0 4
-
-0 4
-1 -1
-1 2
-2 2
-3 3
+lst = list(map(int, sys.stdin.readline().split()))
+sorted_lst = sorted(set(lst))
+dit = {}
+for i, v in enumerate(sorted_lst):
+    dit[v] = i
+for i in range(len(lst)):
+    print(dit[lst[i]], end=' ')
 
 '''
 # BOJ 1662 fail
 '''
-a = "10342(76)"  # 8
-a = "0(0)"  # 0
-a = "33(562(71(9)))"  # 19
-a = "3(3(3(2(2)2(1))))"  # 108
-a = "123(3)"  # 5
-a = "123"
-a = "1()66(5)"  # 7
-a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
-a = 3(5)  # 3
-a = 3(5)1  # 4
-a = 3(5(1))  # 15
-a = 3(5(1))1  # 16
-a = 4(3(5(1)))  # 60
-a = 4(3(5(1)))1  # 61
-a = 15(22)13(92(1111)42(222))  #60
-a = 15(22)13(92(1111)42(222))123(1)45  # 67
-'''
-'''
-for string in board:
-    stack.append(string)
-while len(stack) != 1:
-    if stack[-1].find(')') > -1:
-        print(stack)
-        word1 = stack.pop()
-        cursor = 0
-        for i in range(len(word1)):
-            if word1[cursor] == ')':
-                b = word1[:cursor]  # b 는 )앞 숫자들
-                break
-            cursor += 1
-        word2 = stack.pop()
-        pre = word2[:-1]  # 곱할 숫자를 제외한 수
-        post = int(word2[-1])  # 곱할 숫자
-
-        stack.append(str(pre + (post * b)) + word1[cursor+1:])
-
-print(len(stack[0]))
+# a = "10342(76)"  # 8
+# a = "0(0)"  # 0
+# a = "33(562(71(9)))"  # 19
+# a = "3(3(3(2(2)2(1))))"  # 108
+# a = "123(3)"  # 5
+# a = "123"
+# a = "1()66(5)"  # 7
+# a = "9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(9(111))))))))))))))))))))))))"
+# a = 3(5)  # 3
+# a = 3(5)1  # 4
+# a = 3(5(1))  # 15
+# a = 3(5(1))1  # 16
+# a = 4(3(5(1)))  # 60
+# a = 4(3(5(1)))1  # 61
+# a = 15(22)13(92(1111)42(222))  #60
+# a = 15(22)13(92(1111)42(222))123(1)45  # 67
+# '''
+# '''
+# for string in board:
+#     stack.append(string)
+# while len(stack) != 1:
+#     if stack[-1].find(')') > -1:
+#         print(stack)
+#         word1 = stack.pop()
+#         cursor = 0
+#         for i in range(len(word1)):
+#             if word1[cursor] == ')':
+#                 b = word1[:cursor]  # b 는 )앞 숫자들
+#                 break
+#             cursor += 1
+#         word2 = stack.pop()
+#         pre = word2[:-1]  # 곱할 숫자를 제외한 수
+#         post = int(word2[-1])  # 곱할 숫자
+#
+#         stack.append(str(pre + (post * b)) + word1[cursor+1:])
+#
+# print(len(stack[0]))
 '''
 # BOJ 17298
 # 20
@@ -123,5 +114,4 @@ print(len(stack[0]))
 #     stack.append(num)
 #
 # print(*output[::-1])
-
-
+'''
