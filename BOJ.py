@@ -1,25 +1,29 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ
+# BOJ 2108
+import sys
+from collections import Counter
 
-# BOJ 5622
-diog = {3: "ABC",
-        4: "DEF",
-        5: "GHI",
-        6: "JKL",
-        7: "MNO",
-        8: "PQRS",
-        9: "TUV",
-        10: "WXYZ"}
+cnt = int(input())
+lst = []
+for _ in range(cnt):
+    lst.append(int(sys.stdin.readline()))
 
-st = input()
-sum = 0
-for s in st:
-    for i in range(3, 11):
-        if diog[i].find(s) > -1:
-            sum += i
-print(sum)
+if len(lst) == 1:
+    print(lst[0])
+    print(lst[0])
+    print(lst[0])
+else:
+    print(round(sum(lst) / len(lst)))
+    print(sorted(lst)[len(lst) // 2])
+    most_bin = Counter(sorted(lst)).most_common(2)
+    if most_bin[0][1] == most_bin[1][1]:
+        print(most_bin[1][0])
+    else:
+        print(most_bin[0][0])
+
+print(max(lst)-min(lst))
 '''
 # BOJ 1662 fail
 '''
