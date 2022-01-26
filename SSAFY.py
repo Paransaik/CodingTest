@@ -1,100 +1,126 @@
 '''
 # 1
-def solution(scores):
-    scores = list(map(list, zip(*scores)))
-    grade = []
-    index = 0
-    for score in scores:
-        maxs, mins = max(score), min(score)
-        if score[index] == maxs or score[index] == mins:
-            if score.count(score[index]) == 1:
-                score.remove(score[index])
-
-        grade.append(sum(score) // len(score))
-        index += 1
-
-    for g in grade:
-        if g >= 90: print('A', end='')
-        elif g >= 80: print('B', end='')
-        elif g >= 70: print('C', end='')
-        elif g >= 50: print('D', end='')
-        else: print('F', end='')
-    print()
-
-solution([
-      [100, 90, 98, 88, 65],
-      [50, 45, 99, 85, 77],
-      [47, 88, 95, 80, 67],
-      [61, 57, 100, 80, 65],
-      [24, 90, 94, 75, 65]])
-solution([
-      [50, 90],
-      [50, 87]])
-solution([
-      [70, 49, 90],
-      [68, 50, 38],
-      [73, 31, 100]])
+lst = []
+# 2^20 1048576
+for i in range(2, 20):
+    lst += list(map(lambda x: x**i, list(range(1, 60000))))
+print(len(sorted(list(set(lst)))))
 '''
 
 '''
 # 2
-def solution(sentence, keyeord, skips):
-    lst = list(sentence)
-    index = 0
-    s_index = 0
-    for i in range(len(skips)):
-        index %= len(keyeord)
-        search = ''.join(lst[s_index: s_index+skips[i]]).find(keyeord[index])
-        if search > -1:  # 가다가 자기 문자를 찾으면 그 자리에 삽입
-            lst.insert(s_index+search, keyeord[index])
-            s_index += search + 1
-        else:
-            if len(lst) < s_index + skips[i]:
-                break
-            s_index += skips[i]
-            lst.insert(s_index, keyeord[index])
-        s_index += 1
-        index += 1
-    print(''.join(lst))
-
-solution("i love coding", "mask", [0, 0, 3, 2, 3, 4])
-solution("i love coding", "mode", [0, 10])
-solution("abcde fghi", "xyz", [10, 0, 1])
-solution("encrypt this sentence", "something", [0, 1, 3, 2, 1, 2, 0, 3, 0, 2, 4, 1, 3])
-'''
-
-'''
-# 3번
-from itertools import combinations
-def solution(prices, d, k):
+def solution(target, postions):
     result = 0
-    if max(prices)-min(prices) <= d:
-        result = sum(prices)//len(prices)  # 1번 case
-    else:
-        copy_prices = prices[:]
-        copy_prices.remove(max(prices))
-        copy_prices.remove(min(prices))
-        if max(copy_prices) - min(copy_prices) <= d:  # 2번 case
-            result = sum(copy_prices) // len(copy_prices)
-        else:  # 3번 case
-            flag = 0
-            lst = sorted(list(combinations(prices, k)), key=lambda x: max(x) - min(x))
-            for l in lst:
-                if max(l) - min(l) <= d:
-                    result = sum(l) // len(l)
-                    flag = 1
-                    break
-            if flag == 0:
-                if len(prices) % 2 == 1:
-                    result = sorted(prices)[len(prices)//2]
-                else:
-                    result = min(sorted(prices)[len(prices)//2-1], sorted(prices)[len(prices)//2])
+    for pos_x, pos_y in postions:
+        score = 10
+        for i in range(1, len(target)+1):  # target[t_idx]
+            if pos_x**2 + pos_y**2 <= sum(target[:i])**2:
+                result += score
+                break
+            score -= 2
     print(result)
 
-solution([4, 5, 6, 7, 8], 4, 3)
-solution([4, 5, 6, 7, 8], 2, 1)
-solution([4, 5, 6, 7, 8], 1, 2)
-solution([8, 4, 5, 7, 6], 1, 3)
-solution([1, 8, 1, 8, 1, 8], 4, 1)
+solution([2, 2, 2, 2, 2], [[0, 0], [0, 1], [1, 1], [-3, 5], [7, 5], [10, 0], [-15, 22], [-6, -5], [3, 3], [5, -5]])
+solution([2, 3, 4, 3, 2], [[0, 0], [0, 1], [1, 1], [-3, 5], [7, 5], [10, 0], [-15, 22], [-6, -5], [3, 3], [5, -5]])
 '''
 
+# 3
+import sys
+sys.setrecursionlimit(10**6)
+
+def solution(ma, click):
+    ma2 = [list(ma[i]) for i in range(len(ma))]
+    ma = [list(ma[i]) for i in range(len(ma))]
+
+    for i in range(len(ma2)):
+        for j in range(len(ma2[i])):
+            if ma2[i][j] != '*':
+                ma2[i][j] = 0
+
+    # 지뢰 개수 맵핑
+    def search(i, j):
+        if i < 0 or i >= len(ma2) or \
+            j < 0 or j >= len(ma2[0]) or \
+                ma2[i][j] == '*':
+                return
+
+        ma2[i][j] += 1
+
+    for i in range(len(ma2)):
+        for j in range(len(ma2[i])):
+            if ma2[i][j] == '*':
+                search(i + 1, j)
+                search(i - 1, j)
+                search(i, j + 1)
+                search(i, j - 1)
+    #######################
+
+    # 사용자 클릭 시
+    # ma = 사용자 맵
+    # ma2 = 개발자 맵
+    def dfs(k, h):
+        if k < 0 or k >= len(ma2) or \
+            h < 0 or h >= len(ma2[0]):
+                return
+
+        if ma2[k][h] != 0:
+            # ma[k][h] = ma2[k][h]
+            return
+
+        ma[k][h] = 0
+        ma2[k][h] = '_'
+
+        dfs(k + 1, h)
+        dfs(k - 1, h)
+        dfs(k, h + 1)
+        dfs(k, h - 1)
+
+
+    #
+    # for m in ma:
+    #     print(*m)
+
+    # for x, y in click:
+    #     x, y = 0, 0
+    #     if ma2[x][y] != 0:  # 0이 아니고 숫자일 때
+    #         ma[x][y] = ma2[x][y]
+    #         for m in ma:
+    #             print(*m)
+    #     else:  # 0일 때
+    x, y = 0, 0
+    dfs(x, y)
+    print('사용자 맵')
+    for m in ma:
+        print(*m)
+
+    print('개발자 맵')
+    for m in ma2:
+        print(*m)
+solution(["____*____", "________*", "______*__", "_________", "__*_____*", "_________", "*_____*__", "___*_____", "*_____*__"],
+         [[0, 0], [0, 5], [1, 6], [1, 7], [7, 8], [0, 6], [2, 8], [8, 4], [8, 3], [8, 2], [8, 1], [7, 2], [7, 1], [7, 0]])
+
+'''
+   //0,0 을 한번 눌렀을 때
+    //vector<string> result = {
+    //    "0001*____",
+    //    "000112__*",
+    //    "000001*__",
+    //    "01110112_",
+    //    "0110001*_",
+    //    "12_10112_",
+    //    "__111___*",
+    //    "___*_____",
+    //    "_________",
+    //};
+
+
+# "0001*101_",
+# "00011212*",
+# "000001*_1",
+# "01110112_",
+# "0110001__",
+# "12_101121",
+# "__11110__",
+# "111*___10",
+# "*1111_*10",
+'''
