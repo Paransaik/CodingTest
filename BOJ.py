@@ -1,15 +1,15 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
 
-# BOJ 10250
-cnt = int(input())
-for _ in range(cnt):
-    h, w, n = map(int, input().split())
-    if n % h != 0:
-        print((n % h) * 100 + (n // h)+1)
-    else:  # 0일 때
-        print((h * 100) + (n // h))
+# BOJ 16395
+n, k = map(int, input().split())
+arr = [[1 for _ in range(n)] for _ in range(n)]
 
+for i in range(1, n):
+    for j in range(1, n-i):
+        arr[i][j] = arr[i-1][j] + arr[i][j-1]
+
+print(arr[n-k][k-1])
 # print(((n+1%h)*100) + (n//h)+1)
 # # BOJ 11050
 # from itertools import combinations
