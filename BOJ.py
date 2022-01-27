@@ -1,20 +1,31 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
+# PQ 연습하기
+# http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 
+# BOJ
+'''
+16395: https://www.acmicpc.net/problem/16395
+15489: https://www.acmicpc.net/problem/15489
+1380: https://www.acmicpc.net/problem/1380
+2968: https://www.acmicpc.net/problem/2986
+2676: https://www.acmicpc.net/problem/2676
+11051: https://www.acmicpc.net/problem/11051
+'''
 # BOJ 16395
-n, k = map(int, input().split())
-arr = [[1 for _ in range(n)] for _ in range(n)]
+# n, k = map(int, input().split())
+# arr = [[1 for _ in range(n)] for _ in range(n)]
+# for i in range(1, n):
+#     for j in range(1, n-i):
+#         arr[i][j] = arr[i-1][j] + arr[i][j-1]
+# print(arr[n-k][k-1])
 
-for i in range(1, n):
-    for j in range(1, n-i):
-        arr[i][j] = arr[i-1][j] + arr[i][j-1]
-
-print(arr[n-k][k-1])
-# print(((n+1%h)*100) + (n//h)+1)
 # # BOJ 11050
-# from itertools import combinations
-# a, b = map(int, input().split())
-# print(len(list(combinations(list(range(a)), b))) % 10007)
+from itertools import combinations
+
+a, b = 3, 0
+print('itertoos')
+print(len(list(combinations(list(range(a)), b))) % 10007)
 # # 499500 % 10007 = 9157
 '''
 # BOJ 1662 fail
