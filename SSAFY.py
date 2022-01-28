@@ -1,10 +1,29 @@
 '''
 # 1
-lst = []
-# 2^20 1048576
-for i in range(2, 20):
-    lst += list(map(lambda x: x**i, list(range(1, 60000))))
-print(len(sorted(list(set(lst)))))
+import heapq
+m = 10**6
+result = [0, 1] + [0 for _ in range(m-1)]
+
+hp = [[i*i, i] for i in range(1, m+1)]
+heapq.heapify(hp)
+
+t = 2
+while t <= m:
+    top, b = heapq.heappop(hp)
+
+    if result[t-1] == top:
+        continue
+
+    result[t] = top
+    heapq.heappush(hp, [top*b, b])
+    t += 1
+
+print(result[1])
+print(result[4])
+print(result[7])
+print(result[100])
+print(result[1000])
+print(result[10000])
 '''
 
 '''
@@ -23,7 +42,7 @@ def solution(target, postions):
 solution([2, 2, 2, 2, 2], [[0, 0], [0, 1], [1, 1], [-3, 5], [7, 5], [10, 0], [-15, 22], [-6, -5], [3, 3], [5, -5]])
 solution([2, 3, 4, 3, 2], [[0, 0], [0, 1], [1, 1], [-3, 5], [7, 5], [10, 0], [-15, 22], [-6, -5], [3, 3], [5, -5]])
 '''
-'''
+
 # 3
 import sys
 sys.setrecursionlimit(10**6)
@@ -98,7 +117,7 @@ def solution(ma, click):
         print(*m)
 solution(["____*____", "________*", "______*__", "_________", "__*_____*", "_________", "*_____*__", "___*_____", "*_____*__"],
          [[0, 0], [0, 5], [1, 6], [1, 7], [7, 8], [0, 6], [2, 8], [8, 4], [8, 3], [8, 2], [8, 1], [7, 2], [7, 1], [7, 0]])
-'''
+
 '''
    //0,0 을 한번 눌렀을 때
     //vector<string> result = {
@@ -153,9 +172,33 @@ print(coor)
 7 2 7,  17 2 17
 '''
 
+# 2022.01.28. 모의코테
+'''
+# 1번, 아름다운 연도 구하기
+def solution(P):
+    p = P[:]
+    while True:
+        p = str(int(p)+1)
+        lst = list(p)
+        flag = 0
+        for i in range(10):
+            if lst.count(str(i)) > 1:
+                flag = 1
+                break
+        if flag == 0:
+            print(p)
+            break
+            
+solution('1987')
+solution('2015')
+'''
+'''
+# 2번, PQ
+def solution(n):
+    pass
 
-
-
+solution()
+'''
 
 
 

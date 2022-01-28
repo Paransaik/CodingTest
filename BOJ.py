@@ -3,7 +3,8 @@
 # PQ 연습하기
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 
-# BOJ
+# BOJ 10926
+print(input()+'??!')
 '''
 16395:S https://www.acmicpc.net/problem/16395
 15489:S https://www.acmicpc.net/problem/15489
@@ -12,15 +13,50 @@
 2676: https://www.acmicpc.net/problem/2676
 11051: https://www.acmicpc.net/problem/11051
 '''
+# n의 약수에는 n의 루트의 약수들도 반드시 포함이 된다는 성질을 이용하면 10^9 의 루트의 값만 가지고 문제를 해결할 수 있습니다!
+# BOJ 2986
+n = int(input())
+sieve = [0, 0] + list(range(2, n+1))
+board = [1 for _ in range(n+2)]
+for i in range(2, int(n**0.5)+1):
+    for j in range(i, n+1, i):
+        if board[j] == 1:
+            sieve[j] = i
+            board[j] = i
+if n % 2 == 0:
+    # n 이 짝수일 경우 n//2
+    print(n//2)
+elif sieve[n] == True:
+    # n 이 소수일 경우 n-1
+    print(n-1)
+else:
+    # 그 외에는 소인수분해 후 작은 거 -1 x 소수
+    print((sieve[n]-1) * (n//sieve[n]))
+
+# 정답 체크용
+# for j in range(1, 1000, 2):
+#     cnt = 0
+#     if not sieve[j]:
+#         for i in range(j-1, 0, -1):
+#             cnt += 1
+#             if j % i == 0:
+#                 break
+#         print(j, cnt)
+
+
+
+
+
+'''
 # BOJ 11051
-n, k = map(int, input().split())
-
-arr = [[1 for _ in range(n-k+1, 0, -1)] for k in range(n+1)]
-for i in range(1, n+1):
-    for j in range(1, n-i+1):
-        arr[i][j] = (arr[i-1][j] + arr[i][j-1]) % 10007
-
-print(arr[n-k][k])
+# n, k = map(int, input().split())
+#
+# arr = [[1 for _ in range(n-k+1, 0, -1)] for k in range(n+1)]
+# for i in range(1, n+1):
+#     for j in range(1, n-i+1):
+#         arr[i][j] = (arr[i-1][j] + arr[i][j-1]) % 10007
+#
+# print(arr[n-k][k])
 
 # BOJ 11050
 # from itertools import combinations
