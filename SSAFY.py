@@ -23,7 +23,7 @@ def solution(target, postions):
 solution([2, 2, 2, 2, 2], [[0, 0], [0, 1], [1, 1], [-3, 5], [7, 5], [10, 0], [-15, 22], [-6, -5], [3, 3], [5, -5]])
 solution([2, 3, 4, 3, 2], [[0, 0], [0, 1], [1, 1], [-3, 5], [7, 5], [10, 0], [-15, 22], [-6, -5], [3, 3], [5, -5]])
 '''
-
+'''
 # 3
 import sys
 sys.setrecursionlimit(10**6)
@@ -98,7 +98,7 @@ def solution(ma, click):
         print(*m)
 solution(["____*____", "________*", "______*__", "_________", "__*_____*", "_________", "*_____*__", "___*_____", "*_____*__"],
          [[0, 0], [0, 5], [1, 6], [1, 7], [7, 8], [0, 6], [2, 8], [8, 4], [8, 3], [8, 2], [8, 1], [7, 2], [7, 1], [7, 0]])
-
+'''
 '''
    //0,0 을 한번 눌렀을 때
     //vector<string> result = {
@@ -124,3 +124,67 @@ solution(["____*____", "________*", "______*__", "_________", "__*_____*", "____
 # "111*___10",
 # "*1111_*10",
 '''
+
+# 2022.01.28.
+'''
+http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=712&sca=2060
+http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=944&sca=2060
+'''
+'''
+# http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=712&sca=2060
+cnt = int(input())
+coor = []
+dur = []
+for _ in range(cnt):
+    a, b = map(int, input().split())
+    coor.append([a, b])
+    dur.append([a+10, b+10])
+
+area = 0
+
+for i, x, y in enumerate(coor):
+    for j in range(i+1, len(coor)):
+        if coor[j][0] < x and x < coor[j][0]+10 and coor[j][1] < y and y <coor[j][1]+10 or \
+
+print(coor)
+'''
+'''
+3 5 15, 13 15 25
+7 2 7,  17 2 17
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

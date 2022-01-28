@@ -6,51 +6,33 @@
 # BOJ
 '''
 16395:S https://www.acmicpc.net/problem/16395
-15489: https://www.acmicpc.net/problem/15489
+15489:S https://www.acmicpc.net/problem/15489
 1380: https://www.acmicpc.net/problem/1380
 2968: https://www.acmicpc.net/problem/2986
 2676: https://www.acmicpc.net/problem/2676
 11051: https://www.acmicpc.net/problem/11051
 '''
-# BOJ 16395
-'''
-r c w
-3 2 3 = 22
-1  1  1  1  1  1  1
-1 *2 *3 *4  5  6
-1 *3 *6 10 15
-1 *4 10 20
-1 5 15
-1 6
-1
-3번째 줄의 2
-1~3
-1~2
-1
-r-c: r-c+w
-시작 위치: arr[r-1][c-1]부터 w까지
-'''
+# BOJ 15489
 r, c, w = map(int, input().split())
-m = r-c+w+1
+m = r+c+w
 arr = [[1 for _ in range(m-k, 0, -1)] for k in range(m)]
 for i in range(1, m):
     for j in range(1, m-i):
         arr[i][j] = arr[i-1][j] + arr[i][j-1]
 cnt = 0
 idx = 0
-for i in range(w, -1, -1):
-    print(arr[r-c+idx][c-1:c+i])
-    cnt += sum(arr[r-c+idx][c-1:c+i])
+for i in range(w, 0, -1):
+    cnt += sum(arr[r-c+idx][c-1:c-1+i])
     idx += 1
 print(cnt)
 
-# # BOJ 11050
+# BOJ 11050
 # from itertools import combinations
 #
 # a, b = 3, 0
 # print('itertoos')
 # print(len(list(combinations(list(range(a)), b))) % 10007)
-# # 499500 % 10007 = 9157
+# 499500 % 10007 = 9157
 '''
 # BOJ 1662 fail
 '''
