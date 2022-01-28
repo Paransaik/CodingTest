@@ -12,19 +12,15 @@
 2676: https://www.acmicpc.net/problem/2676
 11051: https://www.acmicpc.net/problem/11051
 '''
-# BOJ 15489
-r, c, w = map(int, input().split())
-m = r+c+w
-arr = [[1 for _ in range(m-k, 0, -1)] for k in range(m)]
-for i in range(1, m):
-    for j in range(1, m-i):
-        arr[i][j] = arr[i-1][j] + arr[i][j-1]
-cnt = 0
-idx = 0
-for i in range(w, 0, -1):
-    cnt += sum(arr[r-c+idx][c-1:c-1+i])
-    idx += 1
-print(cnt)
+# BOJ 11051
+n, k = map(int, input().split())
+
+arr = [[1 for _ in range(n-k+1, 0, -1)] for k in range(n+1)]
+for i in range(1, n+1):
+    for j in range(1, n-i+1):
+        arr[i][j] = (arr[i-1][j] + arr[i][j-1]) % 10007
+
+print(arr[n-k][k])
 
 # BOJ 11050
 # from itertools import combinations
