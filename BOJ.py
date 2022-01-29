@@ -13,10 +13,22 @@
 16205: https://www.acmicpc.net/problem/16205
 '''
 # BOJ 2986
+'''
+41
+40 --> 1
+n % i == 0
+
+'''
 n = int(input())
-
-
-
+idx = 1
+result = 0
+while (idx2:= idx*idx) <= n:
+    if n % idx == 0:
+        result = n//idx
+        print(idx, n//idx)
+        break
+    idx += 1
+print(n-result)
 '''
 # BOJ 11051
 # n, k = map(int, input().split())
