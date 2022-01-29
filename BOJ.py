@@ -6,29 +6,25 @@
 '''
 16395:S https://www.acmicpc.net/problem/16395
 15489:S https://www.acmicpc.net/problem/15489
-2968: https://www.acmicpc.net/problem/2986
+2968:S https://www.acmicpc.net/problem/2986
 1380: https://www.acmicpc.net/problem/1380
 2676: https://www.acmicpc.net/problem/2676
 11051: https://www.acmicpc.net/problem/11051
 16205: https://www.acmicpc.net/problem/16205
 '''
 # BOJ 2986
-'''
-41
-40 --> 1
-n % i == 0
-
-'''
 n = int(input())
-idx = 1
+idx = 2
 result = 0
 while (idx2:= idx*idx) <= n:
     if n % idx == 0:
         result = n//idx
-        print(idx, n//idx)
         break
     idx += 1
-print(n-result)
+if result == 0:
+    print(n-1)
+else:
+    print(n-result)
 '''
 # BOJ 11051
 # n, k = map(int, input().split())
