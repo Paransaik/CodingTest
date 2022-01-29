@@ -14,16 +14,8 @@
 '''
 # BOJ 2676
 # i: n-k+1, j: k+1
-n, k = map(int, input().split())
-arr = [[1 for _ in range(n+1-j)] for j in range(n+1)]
-
-for i in range(1, n+1):
-    for j in range(1, n-i+1):
-        arr[i][j] = ((arr[i-1][j] * arr[i][j-1]) + 1) // arr[i-1][j-1]
-# for a in arr:
-#     print(*a)
-
-print(arr[n-k][k])
+for _ in range(int(input())):
+ n,k=map(int,input().split());print(k*(n-k)+1)
 
 '''
 # BOJ 11051
