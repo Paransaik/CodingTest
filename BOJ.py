@@ -12,19 +12,18 @@
 11051: https://www.acmicpc.net/problem/11051
 16205: https://www.acmicpc.net/problem/16205
 '''
-# BOJ 2986
-n = int(input())
-idx = 2
-result = 0
-while (idx2:= idx*idx) <= n:
-    if n % idx == 0:
-        result = n//idx
-        break
-    idx += 1
-if result == 0:
-    print(n-1)
-else:
-    print(n-result)
+# BOJ 1380
+t=1
+while c:=int(input()):
+ n=[input()for _ in range(c)];i=0
+ for _ in range(2*c-1):a,_=input().split();i^=int(a)
+ print(t,n[i-1]);t+=1
+
+s=1
+while c:=int(input()):
+ n=[input()for _ in range(c)];l=[0]*c
+ for _ in range(c*2-1):a,b=input().split();l[int(a)-1]+=1
+ print(s,n[l.index(1)]);s+=1
 '''
 # BOJ 11051
 # n, k = map(int, input().split())
