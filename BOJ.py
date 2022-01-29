@@ -2,6 +2,14 @@
 # $ git commit --amend
 # PQ 연습하기
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
+# BOJ 23795
+s = 0
+while True:
+    n = input()
+    if n == -1:
+        break
+    s += n
+print(s)
 
 '''
 16395:S https://www.acmicpc.net/problem/16395
@@ -14,16 +22,17 @@
 '''
 # BOJ 2676
 # i: n-k+1, j: k+1
-n, k = map(int, input().split())
-arr = [[1 for _ in range(n+1-j)] for j in range(n+1)]
-
-for i in range(1, n+1):
-    for j in range(1, n-i+1):
-        arr[i][j] = ((arr[i-1][j] * arr[i][j-1]) + 1) // arr[i-1][j-1]
-# for a in arr:
-#     print(*a)
-
-print(arr[n-k][k])
+# n, k = map(int, input().split())
+# arr = [[1 for _ in range(n+1-j)] for j in range(n+1)]
+#
+# for i in range(1, n+1):
+#     for j in range(1, n-i+1):
+#         arr[i][j] = ((arr[i-1][j] * arr[i][j-1]) + 1) // arr[i-1][j-1]
+#
+# # for a in arr:
+# #     print(*a)
+#
+# print(arr[n-k][k])
 
 '''
 # BOJ 11051

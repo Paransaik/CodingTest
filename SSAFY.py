@@ -1,32 +1,26 @@
 '''
 # 1
 import heapq
-m = 10**6
-result = [0, 1] + [0 for _ in range(m-1)]
+def solution(n):
+    m = 10**6
+    result = [0, 1] + [0 for _ in range(m-1)]
 
-hp = [[i*i, i] for i in range(1, m+1)]
-heapq.heapify(hp)
+    hp = [[i*i, i] for i in range(1, m+1)]
+    heapq.heapify(hp)
 
-t = 2
-while t <= m:
-    top, b = heapq.heappop(hp)
+    t = 2
+    while t <= m:
+        top, b = heapq.heappop(hp)
 
-    if result[t-1] == top:
-        continue
+        if result[t-1] == top:
+            continue
 
-    result[t] = top
-    heapq.heappush(hp, [top*b, b])
-    t += 1
-
-print(result[:20])
-print(result[1])
-print(result[4])
-print(result[7])
-print(result[100])
-print(result[1000])
-print(result[10000])
+        result[t] = top
+        heapq.heappush(hp, [top*b, b])
+        t += 1
+    print(result[n])
+solution(10**6)
 '''
-
 '''
 # 2
 def solution(target, postions):
@@ -95,8 +89,6 @@ def solution(ma, click):
         dfs(k, h + 1)
         dfs(k, h - 1)
 
-
-    #
     # for m in ma:
     #     print(*m)
 
