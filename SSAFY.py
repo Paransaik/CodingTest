@@ -18,6 +18,7 @@ while t <= m:
     heapq.heappush(hp, [top*b, b])
     t += 1
 
+print(result[:20])
 print(result[1])
 print(result[4])
 print(result[7])
