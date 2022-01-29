@@ -7,23 +7,24 @@
 16395:S https://www.acmicpc.net/problem/16395
 15489:S https://www.acmicpc.net/problem/15489
 2968:S https://www.acmicpc.net/problem/2986
-1380: https://www.acmicpc.net/problem/1380
+1380:S https://www.acmicpc.net/problem/1380
 2676: https://www.acmicpc.net/problem/2676
 11051: https://www.acmicpc.net/problem/11051
 16205: https://www.acmicpc.net/problem/16205
 '''
-# BOJ 1380
-t=1
-while c:=int(input()):
- n=[input()for _ in range(c)];i=0
- for _ in range(2*c-1):a,_=input().split();i^=int(a)
- print(t,n[i-1]);t+=1
+# BOJ 2676
+# i: n-k+1, j: k+1
+n, k = map(int, input().split())
+arr = [[1 for _ in range(n+1-j)] for j in range(n+1)]
 
-s=1
-while c:=int(input()):
- n=[input()for _ in range(c)];l=[0]*c
- for _ in range(c*2-1):a,b=input().split();l[int(a)-1]+=1
- print(s,n[l.index(1)]);s+=1
+for i in range(1, n+1):
+    for j in range(1, n-i+1):
+        arr[i][j] = ((arr[i-1][j] * arr[i][j-1]) + 1) // arr[i-1][j-1]
+# for a in arr:
+#     print(*a)
+
+print(arr[n-k][k])
+
 '''
 # BOJ 11051
 # n, k = map(int, input().split())
