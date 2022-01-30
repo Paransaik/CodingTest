@@ -3,58 +3,41 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 11399
+# BOJ 1996
 n = int(input())
-lst = sorted(list(map(int, input().split())))
-s = 0
-for l in lst:
-    s += l*n
-    n -= 1
-print(s)
+board = [list(input()) for _ in range(n)]
+board2 = [[0 for _ in range(n)] for _ in range(n)]
 
-# BOJ 9475
-
-'''
-n, k = map(int, input().split())
-arr = [[1 for _ in range(n+1-i)] for i in range(n+1)]
-
-for i in range(1, n+1):
-    for j in range(1, n+1-i):
-        arr[i][j] = (arr[i-1][j] + arr[i][j-1])**9
-        print(arr[i][j])
-
-for a in arr:
-    print(*a)
-
-import sys
-sys.setrecursionlimit(10**6)
-
-ma2 = [list(ma[i]) for i in range(len(ma))]
-ma = [list(ma[i]) for i in range(len(ma))]
-
-for i in range(len(ma2)):
-    for j in range(len(ma2[i])):
-        if ma2[i][j] != '*':
-            ma2[i][j] = 0
-
-# 지뢰 개수 맵핑
-def search(i, j):
-    if i < 0 or i >= len(ma2) or \
-        j < 0 or j >= len(ma2[0]) or \
-            ma2[i][j] == '*':
+def search(i, j, num):
+    if i < 0 or i >= n or \
+        j < 0 or j >= n or \
+            board[i][j] != '.':
             return
+    board2[i][j] += int(num)
 
-    ma2[i][j] += 1
+for i in range(len(board)):
+    for j in range(len(board[i])):
+        if board[i][j] != '.':
+            search(i + 1, j, board[i][j])
+            search(i - 1, j, board[i][j])
+            search(i, j + 1, board[i][j])
+            search(i, j - 1, board[i][j])
+            search(i + 1, j + 1, board[i][j])
+            search(i - 1, j - 1, board[i][j])
+            search(i + 1, j - 1, board[i][j])
+            search(i - 1, j + 1, board[i][j])
+            board2[i][j] = '*'
 
-for i in range(len(ma2)):
-    for j in range(len(ma2[i])):
-        if ma2[i][j] == '*':
-            search(i + 1, j)
-            search(i - 1, j)
-            search(i, j + 1)
-            search(i, j - 1)
+for i in range(len(board2)):
+    for j in range(len(board2[i])):
+        if board2[i][j] != '*' and board2[i][j] > 9:
+            board2[i][j] = 'M'
+
+for b in board2:
+    print(''.join(map(str, b)))
+
 #######################
-
+'''
 # 사용자 클릭 시
 # ma = 사용자 맵
 # ma2 = 개발자 맵
