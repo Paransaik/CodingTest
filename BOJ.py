@@ -2,9 +2,100 @@
 # $ git commit --amend
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
-# https://www.acmicpc.net/problem/1821
-# BOJ 1821
 
+# BOJ 11399
+n = int(input())
+lst = sorted(list(map(int, input().split())))
+s = 0
+for l in lst:
+    s += l*n
+    n -= 1
+print(s)
+
+# BOJ 9475
+
+'''
+n, k = map(int, input().split())
+arr = [[1 for _ in range(n+1-i)] for i in range(n+1)]
+
+for i in range(1, n+1):
+    for j in range(1, n+1-i):
+        arr[i][j] = (arr[i-1][j] + arr[i][j-1])**9
+        print(arr[i][j])
+
+for a in arr:
+    print(*a)
+
+import sys
+sys.setrecursionlimit(10**6)
+
+ma2 = [list(ma[i]) for i in range(len(ma))]
+ma = [list(ma[i]) for i in range(len(ma))]
+
+for i in range(len(ma2)):
+    for j in range(len(ma2[i])):
+        if ma2[i][j] != '*':
+            ma2[i][j] = 0
+
+# 지뢰 개수 맵핑
+def search(i, j):
+    if i < 0 or i >= len(ma2) or \
+        j < 0 or j >= len(ma2[0]) or \
+            ma2[i][j] == '*':
+            return
+
+    ma2[i][j] += 1
+
+for i in range(len(ma2)):
+    for j in range(len(ma2[i])):
+        if ma2[i][j] == '*':
+            search(i + 1, j)
+            search(i - 1, j)
+            search(i, j + 1)
+            search(i, j - 1)
+#######################
+
+# 사용자 클릭 시
+# ma = 사용자 맵
+# ma2 = 개발자 맵
+def dfs(k, h):
+    if k < 0 or k >= len(ma2) or \
+        h < 0 or h >= len(ma2[0]):
+            return
+
+    if ma2[k][h] != 0:
+        # ma[k][h] = ma2[k][h]
+        return
+
+    ma[k][h] = 0
+    ma2[k][h] = '_'
+
+    dfs(k + 1, h)
+    dfs(k - 1, h)
+    dfs(k, h + 1)
+    dfs(k, h - 1)
+
+
+# for m in ma:
+#     print(*m)
+
+# for x, y in click:
+#     x, y = 0, 0
+#     if ma2[x][y] != 0:  # 0이 아니고 숫자일 때
+#         ma[x][y] = ma2[x][y]
+#         for m in ma:
+#             print(*m)
+#     else:  # 0일 때
+x, y = 0, 0
+dfs(x, y)
+print('사용자 맵')
+for m in ma:
+    print(*m)
+
+print('개발자 맵')
+for m in ma2:
+    print(*m)
+'''
 # BOJ 1662 fail
 '''
 # a = "10342(76)"  # 8
