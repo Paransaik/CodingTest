@@ -1,58 +1,10 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # $ git commit --amend
-# PQ 연습하기
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
-# BOJ 23795
-s = 0
-while True:
-    n = input()
-    if n == -1:
-        break
-    s += n
-print(s)
+# (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
+# https://www.acmicpc.net/problem/1821
+# BOJ 1821
 
-'''
-16395:S https://www.acmicpc.net/problem/16395
-15489:S https://www.acmicpc.net/problem/15489
-2968:S https://www.acmicpc.net/problem/2986
-1380:S https://www.acmicpc.net/problem/1380
-2676: https://www.acmicpc.net/problem/2676
-11051: https://www.acmicpc.net/problem/11051
-16205: https://www.acmicpc.net/problem/16205
-'''
-# BOJ 2676
-# i: n-k+1, j: k+1
-# n, k = map(int, input().split())
-# arr = [[1 for _ in range(n+1-j)] for j in range(n+1)]
-#
-# for i in range(1, n+1):
-#     for j in range(1, n-i+1):
-#         arr[i][j] = ((arr[i-1][j] * arr[i][j-1]) + 1) // arr[i-1][j-1]
-#
-# # for a in arr:
-# #     print(*a)
-#
-# print(arr[n-k][k])
-
-'''
-# BOJ 11051
-# n, k = map(int, input().split())
-#
-# arr = [[1 for _ in range(n-k+1, 0, -1)] for k in range(n+1)]
-# for i in range(1, n+1):
-#     for j in range(1, n-i+1):
-#         arr[i][j] = (arr[i-1][j] + arr[i][j-1]) % 10007
-#
-# print(arr[n-k][k])
-
-# BOJ 11050
-# from itertools import combinations
-#
-# a, b = 3, 0
-# print('itertoos')
-# print(len(list(combinations(list(range(a)), b))) % 10007)
-# 499500 % 10007 = 9157
-'''
 # BOJ 1662 fail
 '''
 # a = "10342(76)"  # 8
