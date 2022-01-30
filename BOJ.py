@@ -3,38 +3,35 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 1996
-n = int(input())
-board = [list(input()) for _ in range(n)]
-board2 = [[0 for _ in range(n)] for _ in range(n)]
+# BOJ 4108
+x, y = -1, -1
+while x != 0:
+    x, y = map(int, input().split())
+    board = [list(input()) for _ in range(x)]
+    board2 = [[0 for _ in range(y)] for _ in range(x)]
 
-def search(i, j, num):
-    if i < 0 or i >= n or \
-        j < 0 or j >= n or \
-            board[i][j] != '.':
-            return
-    board2[i][j] += int(num)
+    def search(i, j):
+        if i < 0 or i >= x or \
+            j < 0 or j >= y or \
+                board[i][j] != '.':
+                return
+        board2[i][j] += 1
 
-for i in range(len(board)):
-    for j in range(len(board[i])):
-        if board[i][j] != '.':
-            search(i + 1, j, board[i][j])
-            search(i - 1, j, board[i][j])
-            search(i, j + 1, board[i][j])
-            search(i, j - 1, board[i][j])
-            search(i + 1, j + 1, board[i][j])
-            search(i - 1, j - 1, board[i][j])
-            search(i + 1, j - 1, board[i][j])
-            search(i - 1, j + 1, board[i][j])
-            board2[i][j] = '*'
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if board[i][j] == '*':
+                search(i + 1, j)
+                search(i - 1, j)
+                search(i, j + 1)
+                search(i, j - 1)
+                search(i + 1, j + 1)
+                search(i - 1, j - 1)
+                search(i + 1, j - 1)
+                search(i - 1, j + 1)
+                board2[i][j] = '*'
 
-for i in range(len(board2)):
-    for j in range(len(board2[i])):
-        if board2[i][j] != '*' and board2[i][j] > 9:
-            board2[i][j] = 'M'
-
-for b in board2:
-    print(''.join(map(str, b)))
+    for b in board2:
+        print(''.join(map(str, b)))
 
 #######################
 '''
