@@ -3,35 +3,37 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
+# BOJ 18108
+print(int(input())-543)
 # BOJ 4108
-x, y = -1, -1
-while x != 0:
-    x, y = map(int, input().split())
-    board = [list(input()) for _ in range(x)]
-    board2 = [[0 for _ in range(y)] for _ in range(x)]
-
-    def search(i, j):
-        if i < 0 or i >= x or \
-            j < 0 or j >= y or \
-                board[i][j] != '.':
-                return
-        board2[i][j] += 1
-
-    for i in range(len(board)):
-        for j in range(len(board[i])):
-            if board[i][j] == '*':
-                search(i + 1, j)
-                search(i - 1, j)
-                search(i, j + 1)
-                search(i, j - 1)
-                search(i + 1, j + 1)
-                search(i - 1, j - 1)
-                search(i + 1, j - 1)
-                search(i - 1, j + 1)
-                board2[i][j] = '*'
-
-    for b in board2:
-        print(''.join(map(str, b)))
+# x, y = -1, -1
+# while x != 0:
+#     x, y = map(int, input().split())
+#     board = [list(input()) for _ in range(x)]
+#     board2 = [[0 for _ in range(y)] for _ in range(x)]
+#
+#     def search(i, j):
+#         if i < 0 or i >= x or \
+#             j < 0 or j >= y or \
+#                 board[i][j] != '.':
+#                 return
+#         board2[i][j] += 1
+#
+#     for i in range(len(board)):
+#         for j in range(len(board[i])):
+#             if board[i][j] == '*':
+#                 search(i + 1, j)
+#                 search(i - 1, j)
+#                 search(i, j + 1)
+#                 search(i, j - 1)
+#                 search(i + 1, j + 1)
+#                 search(i - 1, j - 1)
+#                 search(i + 1, j - 1)
+#                 search(i - 1, j + 1)
+#                 board2[i][j] = '*'
+#
+#     for b in board2:
+#         print(''.join(map(str, b)))
 
 #######################
 '''
