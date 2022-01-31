@@ -3,38 +3,87 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 18108
-print(int(input())-543)
-# BOJ 4108
-# x, y = -1, -1
-# while x != 0:
-#     x, y = map(int, input().split())
-#     board = [list(input()) for _ in range(x)]
-#     board2 = [[0 for _ in range(y)] for _ in range(x)]
-#
-#     def search(i, j):
-#         if i < 0 or i >= x or \
-#             j < 0 or j >= y or \
-#                 board[i][j] != '.':
-#                 return
-#         board2[i][j] += 1
-#
-#     for i in range(len(board)):
-#         for j in range(len(board[i])):
-#             if board[i][j] == '*':
-#                 search(i + 1, j)
-#                 search(i - 1, j)
-#                 search(i, j + 1)
-#                 search(i, j - 1)
-#                 search(i + 1, j + 1)
-#                 search(i - 1, j - 1)
-#                 search(i + 1, j - 1)
-#                 search(i - 1, j + 1)
-#                 board2[i][j] = '*'
-#
-#     for b in board2:
-#         print(''.join(map(str, b)))
+# BOJ 4396
+n = int(input())
+board = [list(input()) for _ in range(n)]
+anwser = [list(input()) for _ in range(n)]
 
+for i in range(n):
+    for j in range(n):
+        if board[i][j] != '*':
+            board[i][j] = 0
+
+def search(i, j):
+    if i < 0 or i >= n or \
+        j < 0 or j >= n or \
+            board[i][j] == '*':
+            return
+    board[i][j] += 1
+
+for i in range(n):
+    for j in range(n):
+        if board[i][j] == '*':
+            search(i + 1, j)
+            search(i - 1, j)
+            search(i, j + 1)
+            search(i, j - 1)
+            search(i + 1, j + 1)
+            search(i - 1, j + 1)
+            search(i + 1, j - 1)
+            search(i - 1, j - 1)
+
+for i in range(n):
+    for j in range(n):
+        if anwser[i][j] == 'x':
+            anwser[i][j] = board[i][j]
+
+flag = 0
+for i in range(n):
+    for j in range(n):
+        if anwser[i][j] == '*':
+            flag = 1
+            break
+if flag:
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] == '*':
+                anwser[i][j] = board[i][j]
+
+for a in anwser:
+    print(''.join(map(str, a)))
+# -------------------------
+#
+# def dfs(k, h):
+#     if k < 0 or k >= len(ma2) or \
+#         h < 0 or h >= len(ma2[0]):
+#             return
+#     elif ma2[k][h] != 0:
+#         if ma2[k][h] != '_' and ma2[k][h] != '*':
+#             ma[k][h] = ma2[k][h]
+#             ma2[k][h] = '_'
+#             return
+#         else:
+#             return
+#
+#     ma[k][h] = ma2[k][h]
+#     ma2[k][h] = '_'
+#     dfs(k + 1, h)
+#     dfs(k - 1, h)
+#     dfs(k, h + 1)
+#     dfs(k, h - 1)
+# # -------------------------
+# for x, y in click:
+#     if ma2[x][y] != 0:  # 0이 아니고 숫자일 때
+#         ma[x][y] = ma2[x][y]
+#         ma2[x][y] = '_'
+#     else:  # 0일 때
+#         dfs(x, y)
+#     print('사용자 맵', x, y)
+#     for m in ma:
+#         print(*m)
+    # print('개발자 맵')
+    # for m in ma2:
+    #     print(*m)
 #######################
 '''
 # 사용자 클릭 시
