@@ -3,131 +3,31 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 4396
-n = int(input())
-board = [list(input()) for _ in range(n)]
-anwser = [list(input()) for _ in range(n)]
+# BOJ 1018
+m, n = map(int, input().split())
+board = [list(input()) for _ in range(m)]
+cnn = [[0 for _ in range(n-7)] for _ in range(m-7)]
 
-for i in range(n):
-    for j in range(n):
-        if board[i][j] != '*':
-            board[i][j] = 0
+def filling(x, y, color):
+    cnt = 0
+    toggle = ord(color)
+    copy_board = []
+    for b in board:
+        copy_board.append(b[:])
+    for i in range(x, x+8):
+        for j in range(y, y+8):
+            copy_board[i][j] = chr(toggle)
+            toggle ^= 21
+            if copy_board[i][j] != board[i][j]:
+                cnt += 1
+        toggle ^= 21
+    return cnt
 
-def search(i, j):
-    if i < 0 or i >= n or \
-        j < 0 or j >= n or \
-            board[i][j] == '*':
-            return
-    board[i][j] += 1
+for c_i in range(m-7):
+    for c_j in range(n-7):
+        cnn[c_i][c_j] = min(filling(c_i, c_j, 'W'), filling(c_i, c_j, 'B'))
 
-for i in range(n):
-    for j in range(n):
-        if board[i][j] == '*':
-            search(i + 1, j)
-            search(i - 1, j)
-            search(i, j + 1)
-            search(i, j - 1)
-            search(i + 1, j + 1)
-            search(i - 1, j + 1)
-            search(i + 1, j - 1)
-            search(i - 1, j - 1)
-
-for i in range(n):
-    for j in range(n):
-        if anwser[i][j] == 'x':
-            anwser[i][j] = board[i][j]
-
-flag = 0
-for i in range(n):
-    for j in range(n):
-        if anwser[i][j] == '*':
-            flag = 1
-            break
-if flag:
-    for i in range(n):
-        for j in range(n):
-            if board[i][j] == '*':
-                anwser[i][j] = board[i][j]
-
-for a in anwser:
-    print(''.join(map(str, a)))
-# -------------------------
-#
-# def dfs(k, h):
-#     if k < 0 or k >= len(ma2) or \
-#         h < 0 or h >= len(ma2[0]):
-#             return
-#     elif ma2[k][h] != 0:
-#         if ma2[k][h] != '_' and ma2[k][h] != '*':
-#             ma[k][h] = ma2[k][h]
-#             ma2[k][h] = '_'
-#             return
-#         else:
-#             return
-#
-#     ma[k][h] = ma2[k][h]
-#     ma2[k][h] = '_'
-#     dfs(k + 1, h)
-#     dfs(k - 1, h)
-#     dfs(k, h + 1)
-#     dfs(k, h - 1)
-# # -------------------------
-# for x, y in click:
-#     if ma2[x][y] != 0:  # 0이 아니고 숫자일 때
-#         ma[x][y] = ma2[x][y]
-#         ma2[x][y] = '_'
-#     else:  # 0일 때
-#         dfs(x, y)
-#     print('사용자 맵', x, y)
-#     for m in ma:
-#         print(*m)
-    # print('개발자 맵')
-    # for m in ma2:
-    #     print(*m)
-#######################
-'''
-# 사용자 클릭 시
-# ma = 사용자 맵
-# ma2 = 개발자 맵
-def dfs(k, h):
-    if k < 0 or k >= len(ma2) or \
-        h < 0 or h >= len(ma2[0]):
-            return
-
-    if ma2[k][h] != 0:
-        # ma[k][h] = ma2[k][h]
-        return
-
-    ma[k][h] = 0
-    ma2[k][h] = '_'
-
-    dfs(k + 1, h)
-    dfs(k - 1, h)
-    dfs(k, h + 1)
-    dfs(k, h - 1)
-
-
-# for m in ma:
-#     print(*m)
-
-# for x, y in click:
-#     x, y = 0, 0
-#     if ma2[x][y] != 0:  # 0이 아니고 숫자일 때
-#         ma[x][y] = ma2[x][y]
-#         for m in ma:
-#             print(*m)
-#     else:  # 0일 때
-x, y = 0, 0
-dfs(x, y)
-print('사용자 맵')
-for m in ma:
-    print(*m)
-
-print('개발자 맵')
-for m in ma2:
-    print(*m)
-'''
-# BOJ 1662 fail
+print(min(list(map(lambda x: min(x), cnn))))
 '''
 # a = "10342(76)"  # 8
 # a = "0(0)"  # 0
