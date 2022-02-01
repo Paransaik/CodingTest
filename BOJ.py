@@ -3,31 +3,15 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 1018
-m, n = map(int, input().split())
-board = [list(input()) for _ in range(m)]
-cnn = [[0 for _ in range(n-7)] for _ in range(m-7)]
-
-def filling(x, y, color):
-    cnt = 0
-    toggle = ord(color)
-    copy_board = []
-    for b in board:
-        copy_board.append(b[:])
-    for i in range(x, x+8):
-        for j in range(y, y+8):
-            copy_board[i][j] = chr(toggle)
-            toggle ^= 21
-            if copy_board[i][j] != board[i][j]:
-                cnt += 1
-        toggle ^= 21
-    return cnt
-
-for c_i in range(m-7):
-    for c_j in range(n-7):
-        cnn[c_i][c_j] = min(filling(c_i, c_j, 'W'), filling(c_i, c_j, 'B'))
-
-print(min(list(map(lambda x: min(x), cnn))))
+# BOJ 2798
+from itertools import combinations
+dummy, m = map(int, input().split())
+lst = list(map(int, input().split()))
+result = []
+for sr in sorted(set(list(map(lambda x: sum(x), list(combinations(lst, 3)))))):
+    if sr <= m:
+        max = sr
+print(max)
 '''
 # a = "10342(76)"  # 8
 # a = "0(0)"  # 0
