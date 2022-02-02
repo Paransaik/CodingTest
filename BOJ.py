@@ -3,15 +3,56 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
+# BOJ 1260
+# 데이터 초기화
+n, m, V = map(int, input().split())
+graph = {}
+
+# 데이터 전처리
+for i in range(n):
+    graph[i+1] = []
+for _ in range(m):
+    k, v = map(int, input().split())
+    graph[k].append(v)
+    graph[v].append(k)
+    graph[k].sort()
+    graph[v].sort()
+
+# dfs 구현
+def dfs(v, visited):
+    visited.append(v)
+    for w in graph[v]:
+        if w not in visited:
+            visited = dfs(w, visited)
+    return visited
+
+# bfs 구현
+def bfs(v):
+    visited = [v]
+    queue = [v]
+    while queue:
+        v = queue.pop(0)
+        for w in graph[v]:
+            if w not in visited:
+                visited.append(w)
+                queue.append(w)
+    return visited
+
+print(*dfs(V, []))
+print(*bfs(V))
+
 # BOJ 2798
-from itertools import combinations
-dummy, m = map(int, input().split())
-lst = list(map(int, input().split()))
-result = []
-for sr in sorted(set(list(map(lambda x: sum(x), list(combinations(lst, 3)))))):
-    if sr <= m:
-        max = sr
-print(max)
+# from itertools import combinations
+# dummy, m = map(int, input().split())
+# lst = list(map(int, input().split()))
+# for sr in sorted(set(list(map(sum, combinations(lst, 3))))):
+#     if sr <= m:
+#         max = sr
+#
+# print(max(i for i in map(sum,combinations(c,3))if i<=M))
+'''
+[N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
+'''
 '''
 # a = "10342(76)"  # 8
 # a = "0(0)"  # 0
