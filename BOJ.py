@@ -2,37 +2,24 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 1012
-import sys
-sys.setrecursionlimit(10**6)
-k = int(input())
-for _ in range(k):
-    w, h, num = map(int, input().split())
-    board = [['0' for _ in range(w)] for _ in range(h)]
-    for _ in range(num):
-        x, y = map(int, input().split())
-        board[y][x] = '1'
+# BOJ 11279
+import heapq, sys
+queue = []
+num = int(sys.stdin.readline())
+for _ in range(num):
+    ip = int(sys.stdin.readline())
+    if ip == 0:
+        if len(queue) == 0:
+            print("0")
+        else:
+            print(-heapq.heappop(queue))
+    heapq.heappush(queue, -ip)
 
-    def dfs(i, j):
-        if i < 0 or i >= h or \
-            j < 0 or j >= w or \
-                board[i][j] != '1':
-            return
-        board[i][j] = '0'
-        dfs(i + 1, j)
-        dfs(i - 1, j)
-        dfs(i, j + 1)
-        dfs(i, j - 1)
 
-    cnt = 0
-    for r in range(h):
-        for t in range(w):
-            if board[r][t] == '1':
-                cnt += 1
-                dfs(r, t)
-    print(cnt)
 '''
 # BOJ 1260
+# import sys
+# sys.setrecursionlimit(10**6)
 # 데이터 초기화
 n, m, V = map(int, input().split())
 graph = {}
