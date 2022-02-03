@@ -1,8 +1,40 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
-# $ git commit --amend
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
+# BOJ 2667
+size = int(input())
+board = [list(input()) for _ in range(size)]
+visited = []
+visited_arr = []
+
+def dfs(i, j, visited_num):
+    if i < 0 or i >= size or \
+        j < 0 or j >= size or \
+            board[i][j] != '1':
+        return visited_num
+
+    board[i][j] = '0'
+    visited_num += 1
+
+    visited_num = dfs(i + 1, j, visited_num)
+    visited_num = dfs(i - 1, j, visited_num)
+    visited_num = dfs(i, j + 1, visited_num)
+    visited_num = dfs(i, j - 1, visited_num)
+    return visited_num
+
+cnt = 0
+for x in range(size):
+    for y in range(size):
+        if board[x][y] == '1':
+            cnt += 1
+            visited_num = dfs(x, y, visited_num=0)
+            visited_arr.append(visited_num)
+
+print(cnt)
+for a in sorted(visited_arr):
+    print(a)
+'''
 # BOJ 1260
 # 데이터 초기화
 n, m, V = map(int, input().split())
@@ -40,16 +72,8 @@ def bfs(v):
 
 print(*dfs(V, []))
 print(*bfs(V))
+'''
 
-# BOJ 2798
-# from itertools import combinations
-# dummy, m = map(int, input().split())
-# lst = list(map(int, input().split()))
-# for sr in sorted(set(list(map(sum, combinations(lst, 3))))):
-#     if sr <= m:
-#         max = sr
-#
-# print(max(i for i in map(sum,combinations(c,3))if i<=M))
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
 '''
