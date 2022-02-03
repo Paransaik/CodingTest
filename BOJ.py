@@ -2,38 +2,35 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 2667
-size = int(input())
-board = [list(input()) for _ in range(size)]
-visited = []
-visited_arr = []
+# BOJ 1012
+import sys
+sys.setrecursionlimit(10**6)
+k = int(input())
+for _ in range(k):
+    w, h, num = map(int, input().split())
+    board = [['0' for _ in range(w)] for _ in range(h)]
+    for _ in range(num):
+        x, y = map(int, input().split())
+        board[y][x] = '1'
 
-def dfs(i, j, visited_num):
-    if i < 0 or i >= size or \
-        j < 0 or j >= size or \
-            board[i][j] != '1':
-        return visited_num
+    def dfs(i, j):
+        if i < 0 or i >= h or \
+            j < 0 or j >= w or \
+                board[i][j] != '1':
+            return
+        board[i][j] = '0'
+        dfs(i + 1, j)
+        dfs(i - 1, j)
+        dfs(i, j + 1)
+        dfs(i, j - 1)
 
-    board[i][j] = '0'
-    visited_num += 1
-
-    visited_num = dfs(i + 1, j, visited_num)
-    visited_num = dfs(i - 1, j, visited_num)
-    visited_num = dfs(i, j + 1, visited_num)
-    visited_num = dfs(i, j - 1, visited_num)
-    return visited_num
-
-cnt = 0
-for x in range(size):
-    for y in range(size):
-        if board[x][y] == '1':
-            cnt += 1
-            visited_num = dfs(x, y, visited_num=0)
-            visited_arr.append(visited_num)
-
-print(cnt)
-for a in sorted(visited_arr):
-    print(a)
+    cnt = 0
+    for r in range(h):
+        for t in range(w):
+            if board[r][t] == '1':
+                cnt += 1
+                dfs(r, t)
+    print(cnt)
 '''
 # BOJ 1260
 # 데이터 초기화
