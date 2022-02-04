@@ -2,8 +2,8 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 14012
-import heapq, sys
+# BOJ 14011
+import heapq
 num, money = map(int, input().split())
 s_arr = list(map(int, input().split()))
 e_arr = list(map(int, input().split()))
