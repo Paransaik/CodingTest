@@ -2,20 +2,25 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 1715
+# BOJ 14012
 import heapq, sys
-num = int(sys.stdin.readline())
-queue = []
-for _ in range(num):
-    heapq.heappush(queue, int(input()))
+num, money = map(int, input().split())
+s_arr = list(map(int, input().split()))
+e_arr = list(map(int, input().split()))
+sum_arr = []
+for i in range(len(s_arr)):
+    if s_arr[i] - e_arr[i] < 0:
+        heapq.heappush(sum_arr, [s_arr[i], e_arr[i]])
 
-cnt = 0
-while len(queue) > 1:
-    add = sum([heapq.heappop(queue), heapq.heappop(queue)])
-    cnt += add
-    heapq.heappush(queue, add)
+for i in range(len(sum_arr)):
+    top_s, top_e = heapq.heappop(sum_arr)
+    if money >= top_s:
+        money = money - top_s + top_e
+print(money)
 
-print(cnt)
+# for _ in len(queue):
+#     top_s, top_e = heapq.heappop(queue)
+#     money
 
 # a, cnt = map(int, input().split())
 # sort_arr = []
