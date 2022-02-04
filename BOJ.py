@@ -2,20 +2,20 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 2075
+# BOJ 1715
 import heapq, sys
 num = int(sys.stdin.readline())
-queue = list(map(int, input().split()))
-heapq.heapify(queue)
+queue = []
+for _ in range(num):
+    heapq.heappush(queue, int(input()))
 
-for _ in range(num-1):
-    lst = list(map(int, input().split()))
-    for l in lst:
-        if queue[0] < l:
-            heapq.heappop(queue)
-            heapq.heappush(queue, l)
+cnt = 0
+while len(queue) > 1:
+    add = sum([heapq.heappop(queue), heapq.heappop(queue)])
+    cnt += add
+    heapq.heappush(queue, add)
 
-print(heapq.heappop(queue))
+print(cnt)
 
 # a, cnt = map(int, input().split())
 # sort_arr = []
