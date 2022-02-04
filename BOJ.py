@@ -2,20 +2,28 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 11286
+# BOJ 2075
 import heapq, sys
-queue = []
 num = int(sys.stdin.readline())
-for _ in range(num):
-    ip = int(sys.stdin.readline())
-    if ip == 0:
-        if len(queue) == 0:
-            print("0")
-        else:
-            print(heapq.heappop(queue)[1])
-    else:
-        heapq.heappush(queue, (abs(ip), ip))
+queue = list(map(int, input().split()))
+heapq.heapify(queue)
 
+for _ in range(num-1):
+    lst = list(map(int, input().split()))
+    for l in lst:
+        if queue[0] < l:
+            heapq.heappop(queue)
+            heapq.heappush(queue, l)
+
+print(heapq.heappop(queue))
+
+# a, cnt = map(int, input().split())
+# sort_arr = []
+# for _ in range(cnt):
+#     x, y = map(int, input().split())
+#     sort_arr.append([x, y])
+#
+# print(sorted(sort_arr, key=lambda x: (x[0], x[1])))
 
 # # BOJ 1260
 # # import sys
