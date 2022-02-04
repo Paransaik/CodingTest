@@ -2,7 +2,7 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 1927
+# BOJ 11286
 import heapq, sys
 queue = []
 num = int(sys.stdin.readline())
@@ -12,9 +12,9 @@ for _ in range(num):
         if len(queue) == 0:
             print("0")
         else:
-            print(heapq.heappop(queue))
+            print(heapq.heappop(queue)[1])
     else:
-        heapq.heappush(queue, ip)
+        heapq.heappush(queue, (abs(ip), ip))
 
 
 # # BOJ 1260
