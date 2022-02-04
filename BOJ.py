@@ -2,7 +2,7 @@
 # http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 11279
+# BOJ 1927
 import heapq, sys
 queue = []
 num = int(sys.stdin.readline())
@@ -12,51 +12,50 @@ for _ in range(num):
         if len(queue) == 0:
             print("0")
         else:
-            print(-heapq.heappop(queue))
-    heapq.heappush(queue, -ip)
+            print(heapq.heappop(queue))
+    else:
+        heapq.heappush(queue, ip)
 
 
-'''
-# BOJ 1260
-# import sys
-# sys.setrecursionlimit(10**6)
-# 데이터 초기화
-n, m, V = map(int, input().split())
-graph = {}
-
-# 데이터 전처리
-for i in range(n):
-    graph[i+1] = []
-for _ in range(m):
-    k, v = map(int, input().split())
-    graph[k].append(v)
-    graph[v].append(k)
-    graph[k].sort()
-    graph[v].sort()
-
-# dfs 구현
-def dfs(v, visited):
-    visited.append(v)
-    for w in graph[v]:
-        if w not in visited:
-            visited = dfs(w, visited)
-    return visited
-
-# bfs 구현
-def bfs(v):
-    visited = [v]
-    queue = [v]
-    while queue:
-        v = queue.pop(0)
-        for w in graph[v]:
-            if w not in visited:
-                visited.append(w)
-                queue.append(w)
-    return visited
-
-print(*dfs(V, []))
-print(*bfs(V))
-'''
+# # BOJ 1260
+# # import sys
+# # sys.setrecursionlimit(10**6)
+# # 데이터 초기화
+# n, m, V = map(int, input().split())
+# graph = {}
+#
+# # 데이터 전처리
+# for i in range(n):
+#     graph[i+1] = []
+# for _ in range(m):
+#     k, v = map(int, input().split())
+#     graph[k].append(v)
+#     graph[v].append(k)
+#     graph[k].sort()
+#     graph[v].sort()
+# # print(graph)
+# # dfs 구현
+# def dfs(v, visited):
+#     visited.append(v)
+#     for w in graph[v]:
+#         if w not in visited:
+#             visited = dfs(w, visited)
+#     return visited
+#
+# # bfs 구현
+# def bfs(v):
+#     visited = [v]
+#     queue = [v]
+#     while queue:
+#         v = queue.pop(0)
+#         for w in [2, 3, 4]:
+#             if w not in visited:
+#                 visited.append(w)
+#                 queue.append(w)
+#     return visited
+#
+# print(*dfs(V, []))
+# print(*bfs(V))
 
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
