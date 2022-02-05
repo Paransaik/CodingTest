@@ -12,28 +12,23 @@
 
 1 --> 2 --> 3
 '''
+# BOJ 13975
 import heapq, sys
 
-num = int(sys.stdin.readline())
-queue = []
-for _ in range(num):
-    queue.append(list(map(int, sys.stdin.readline().split()))))
-heapq.heapify(queue)
+all_num = int(sys.stdin.readline())
+for _ in range(all_num):
+    dummy = int(sys.stdin.readline())
 
-result = [heapq.heappop(queue)[1]]
-idx = 0
-for _ in range(num-1):
-    top_s, top_e = heapq.heappop(queue)
-    if result[idx] <= top_s:
-        result[result.index(result[idx])] = top_e
-        idx += 1
-        idx %= len(result)
-        print(result, idx)
-    else:
-        result.append(top_e)
+    cost = 0
+    chapter = list(map(int, sys.stdin.readline().split()))
+    heapq.heapify(chapter)
 
-print(len(result))
+    while len(chapter) > 1:
+        d_cost = sum([heapq.heappop(chapter), heapq.heappop(chapter)])
+        cost += d_cost
+        heapq.heappush(chapter, d_cost)
 
+    print(cost)
 
 
 # # BOJ 1260
