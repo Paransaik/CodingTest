@@ -1,34 +1,40 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
-# http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=597&sca=99&sfl=wr_subject&stx=%EB%AA%BB%EC%83%9D%EA%B8%B4
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 
-# BOJ 14011
-import heapq
-num, money = map(int, input().split())
-s_arr = list(map(int, input().split()))
-e_arr = list(map(int, input().split()))
-sum_arr = []
-for i in range(len(s_arr)):
-    if s_arr[i] - e_arr[i] < 0:
-        heapq.heappush(sum_arr, [s_arr[i], e_arr[i]])
+# BOJ 11000
+'''
+1 2
+2 3
+2 4
+2 7
+3 5
+4 5
 
-for i in range(len(sum_arr)):
-    top_s, top_e = heapq.heappop(sum_arr)
-    if money >= top_s:
-        money = money - top_s + top_e
-print(money)
+1 --> 2 --> 3
+'''
+import heapq, sys
 
-# for _ in len(queue):
-#     top_s, top_e = heapq.heappop(queue)
-#     money
+num = int(sys.stdin.readline())
+queue = []
+for _ in range(num):
+    queue.append(list(map(int, sys.stdin.readline().split()))))
+heapq.heapify(queue)
 
-# a, cnt = map(int, input().split())
-# sort_arr = []
-# for _ in range(cnt):
-#     x, y = map(int, input().split())
-#     sort_arr.append([x, y])
-#
-# print(sorted(sort_arr, key=lambda x: (x[0], x[1])))
+result = [heapq.heappop(queue)[1]]
+idx = 0
+for _ in range(num-1):
+    top_s, top_e = heapq.heappop(queue)
+    if result[idx] <= top_s:
+        result[result.index(result[idx])] = top_e
+        idx += 1
+        idx %= len(result)
+        print(result, idx)
+    else:
+        result.append(top_e)
+
+print(len(result))
+
+
 
 # # BOJ 1260
 # # import sys
