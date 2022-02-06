@@ -2,18 +2,16 @@
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 # 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25),
 
-# BOJ 1920
+# BOJ 10816
 import sys
+from collections import Counter
 n = int(sys.stdin.readline())
-n_arr = set(map(int, sys.stdin.readline().split()))
+n_arr = Counter(list(map(int, sys.stdin.readline().split())))
 dummy = int(sys.stdin.readline())
 m_arr = list(map(int, sys.stdin.readline().split()))
 
 for ma in m_arr:
-    if ma in n_arr:
-        print(1)
-    else:
-        print(0)
+    print(n_arr[ma], end=' ')
 
 
 
