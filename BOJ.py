@@ -1,75 +1,30 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
+# 골드 5일 때: 골드 4~5 8점, 실버 1
 
-# BOJ 11000
-'''
-1 2
-2 3
-2 4
-2 7
-3 5
-4 5
+# BOJ 2178
+from collections import deque
+n, m = map(int, input().split())
+maze = [list(input()) for _ in range(n)]
 
-1 --> 2 --> 3
-'''
-# BOJ 13975
-import heapq, sys
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
 
-all_num = int(sys.stdin.readline())
-for _ in range(all_num):
-    dummy = int(sys.stdin.readline())
+def bfs(x, y):
+    queue = deque()
+    queue.append([x, y])
+    while queue:
+        x, y = queue.popleft()
+        for i in range(4):
+            nx, ny = x + dx[i], y + dy[i]
+            if nx < 0 or nx >= n or ny < 0 or ny >= m or maze[nx][ny] == 0:
+                continue
+            if maze[nx][ny] == '1':
+                queue.append([nx, ny])
+                maze[nx][ny] = int(maze[x][y]) + 1
+    return maze[n-1][m-1]
 
-    cost = 0
-    chapter = list(map(int, sys.stdin.readline().split()))
-    heapq.heapify(chapter)
-
-    while len(chapter) > 1:
-        d_cost = sum([heapq.heappop(chapter), heapq.heappop(chapter)])
-        cost += d_cost
-        heapq.heappush(chapter, d_cost)
-
-    print(cost)
-
-
-# # BOJ 1260
-# # import sys
-# # sys.setrecursionlimit(10**6)
-# # 데이터 초기화
-# n, m, V = map(int, input().split())
-# graph = {}
-#
-# # 데이터 전처리
-# for i in range(n):
-#     graph[i+1] = []
-# for _ in range(m):
-#     k, v = map(int, input().split())
-#     graph[k].append(v)
-#     graph[v].append(k)
-#     graph[k].sort()
-#     graph[v].sort()
-# # print(graph)
-# # dfs 구현
-# def dfs(v, visited):
-#     visited.append(v)
-#     for w in graph[v]:
-#         if w not in visited:
-#             visited = dfs(w, visited)
-#     return visited
-#
-# # bfs 구현
-# def bfs(v):
-#     visited = [v]
-#     queue = [v]
-#     while queue:
-#         v = queue.pop(0)
-#         for w in [2, 3, 4]:
-#             if w not in visited:
-#                 visited.append(w)
-#                 queue.append(w)
-#     return visited
-#
-# print(*dfs(V, []))
-# print(*bfs(V))
+print(bfs(0, 0))
 
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
