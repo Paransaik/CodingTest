@@ -1,12 +1,11 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
-# 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25), 실버5
+# 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25), 실버5 4...?(21)
 
-# BOJ 2609
-import math
-a, b = map(int, input().split())
-print(math.gcd(a, b))
-print(a*b//math.gcd(a, b))
+# BOJ 15829
+dummy = int(input())
+lst = input()
+print(sum(list(map(lambda x: (ord(x[1])-96)*31**x[0], enumerate(lst)))) % 1234567891)
 
 
 
