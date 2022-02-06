@@ -1,30 +1,43 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
-# 골드 5일 때: 골드 4~5 8점, 실버 1
-
-# BOJ 2178
+# 골드 5일 때: 골드 4~5 8점, 실버 1 4점(37), 실버 2
+#
+# BOJ 4963
 from collections import deque
-n, m = map(int, input().split())
-maze = [list(input()) for _ in range(n)]
+while True:
+    m, n = map(int, input().split())
+    if m == 0:
+        break
 
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
+    maze = [input().split() for _ in range(n)]
 
-def bfs(x, y):
-    queue = deque()
-    queue.append([x, y])
-    while queue:
-        x, y = queue.popleft()
-        for i in range(4):
-            nx, ny = x + dx[i], y + dy[i]
-            if nx < 0 or nx >= n or ny < 0 or ny >= m or maze[nx][ny] == 0:
-                continue
-            if maze[nx][ny] == '1':
-                queue.append([nx, ny])
-                maze[nx][ny] = int(maze[x][y]) + 1
-    return maze[n-1][m-1]
+    flag = 0
+    cnt = 0
+    dx = [0, 1, 0, -1, -1, 1, -1, 1]
+    dy = [1, 0, -1, 0, -1, -1, 1, 1]
 
-print(bfs(0, 0))
+    def bfs(x, y):
+        queue = deque()
+        queue.append([x, y])
+        flag = 1
+        while queue:
+            x, y = queue.popleft()
+            for i in range(8):
+                nx, ny = x + dx[i], y + dy[i]
+                if nx < 0 or nx >= n or ny < 0 or ny >= m or maze[nx][ny] == '0':
+                    continue
+                if maze[nx][ny] == '1':
+                    maze[nx][ny] = '0'
+                    queue.append([nx, ny])
+        return flag
+
+
+    for i in range(n):
+        for j in range(m):
+            if maze[i][j] == '1':
+                maze[i][j] = '0'
+                cnt += bfs(i, j)
+    print(cnt)
 
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
