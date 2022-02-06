@@ -2,11 +2,16 @@
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 # 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25), 실버5 4...?(21)
 
-# BOJ 15829
+# BOJ 1026
+import math
 dummy = int(input())
-lst = input()
-print(sum(list(map(lambda x: (ord(x[1])-96)*31**x[0], enumerate(lst)))) % 1234567891)
+a = sorted(list(map(int, input().split())))[::-1]
+b = sorted(list(map(int, input().split())))
 
+cnt = 0
+for i in range(math.ceil(len(a))):
+    cnt += a[i]*b[i]
+print(cnt)
 
 
 '''
