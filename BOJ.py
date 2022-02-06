@@ -1,17 +1,12 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
-# 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25),
+# 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25), 실버5
 
-# BOJ 10816
-import sys
-from collections import Counter
-n = int(sys.stdin.readline())
-n_arr = Counter(list(map(int, sys.stdin.readline().split())))
-dummy = int(sys.stdin.readline())
-m_arr = list(map(int, sys.stdin.readline().split()))
-
-for ma in m_arr:
-    print(n_arr[ma], end=' ')
+# BOJ 2609
+import math
+a, b = map(int, input().split())
+print(math.gcd(a, b))
+print(a*b//math.gcd(a, b))
 
 
 
