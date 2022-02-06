@@ -1,45 +1,21 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
-# 골드 5일 때: 골드 4~5 8점, 실버 1 6점(37), 실버 2 6점(31), 실버 4
-#
-# BOJ 10866
+# 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25),
+
+# BOJ 1920
 import sys
-from collections import deque
-num = int(input())
-queue = deque()
-for i in range(num):
-    oper = list(sys.stdin.readline().split())
-    if oper[0] == 'push_front':
-        queue.appendleft(oper[1])
-    elif oper[0] == 'push_back':
-        queue.append(oper[1])
-    elif oper[0] == 'pop_front':
-        if queue:
-            print(queue.popleft())
-        else:
-            print(-1)
-    elif oper[0] == 'pop_back':
-        if queue:
-            print(queue.pop())
-        else:
-            print(-1)
-    elif oper[0] == 'size':
-        print(len(queue))
-    elif oper[0] == 'empty':
-        if queue:
-            print(0)
-        else:
-            print(1)
-    elif oper[0] == 'front':
-        if queue:
-            print(queue[0])
-        else:
-            print(-1)
-    elif oper[0] == 'back':
-        if queue:
-            print(queue[-1])
-        else:
-            print(-1)
+n = int(sys.stdin.readline())
+n_arr = set(map(int, sys.stdin.readline().split()))
+dummy = int(sys.stdin.readline())
+m_arr = list(map(int, sys.stdin.readline().split()))
+
+for ma in m_arr:
+    if ma in n_arr:
+        print(1)
+    else:
+        print(0)
+
+
 
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
