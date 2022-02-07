@@ -2,43 +2,22 @@
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 # 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25), 실버5 4...?(21)
 
-# https://programmers.co.kr/learn/courses/30/lessons/72411?language=python3
-# 2021 KAKAO BLIND RECRUITMENT 메뉴 리뉴얼
-from itertools import combinations
-from collections import Counter
-def solution(orders, course):
-    result = []
-    para = []
-    for order in orders:
-        lst = list(order)
-        for cou in course:
-            result += list(map(lambda x: ''.join(sorted(x)), list(combinations(lst, cou))))
+# BOJ 14444
+def solution(s):
+    def expand(left: int, right: int) -> str:
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return s[left + 1:right]
+    if len(s) < 2 or s == s[::-1]:
+        return s
+    result = ''
+    for i in range(len(s) - 1):
+        result = max(result, str(expand(i, i + 1)), expand(i, i + 2), key=len)
+    return result
 
-    answer = Counter(result)
-    answer = sorted(answer.items(), key=lambda x: (len(x[0]), -x[1]))
-
-    for cou in course:
-        lst = dict()
-        for i in range(1, len(orders)+1):
-            lst[i] = []
-        for s, cnt in answer:
-            if len(s) == cou:
-                lst[cnt].append(s)
-
-        for i in range(1, len(orders)+1):
-            if len(lst[i]) == 0:
-                del lst[i]
-        if lst:
-            pa = sorted(lst.items())[::-1][0]
-            if pa[0] > 1:
-                para += pa[1]
-
-    return sorted(para)
-
-# print(solution(["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"], [2, 3, 4]))
-# print(solution(["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"], [2, 3, 5]))
-# print(solution(["XYZ", "XWY", "WXA"], [2, 3, 4]))
-# print(solution(["ABCDE", "AB", "CDAB", "ABDE", "XABYZ", "ABXYZ", "ABCD", "ABCDE", "ABCDE", "ABCDE", "AB", "AB", "AB", "AB", "AB", "AB", "AB", "AB", "AB", "AB"], [2]))
+a = input()
+print(len(solution(a)))
 
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
