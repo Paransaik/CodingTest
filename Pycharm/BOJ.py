@@ -1,23 +1,11 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
 # 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25), 실버5 4...?(21)
+# 플레5(21 -> 6)
 
-# BOJ 14444
-def solution(s):
-    def expand(left: int, right: int) -> str:
-        while left >= 0 and right < len(s) and s[left] == s[right]:
-            left -= 1
-            right += 1
-        return s[left + 1:right]
-    if len(s) < 2 or s == s[::-1]:
-        return s
-    result = ''
-    for i in range(len(s) - 1):
-        result = max(result, str(expand(i, i + 1)), expand(i, i + 2), key=len)
-    return result
-
-a = input()
-print(len(solution(a)))
+# BOJ 3046
+a, b = map(int, input().split())
+print(b-a+b)
 
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
