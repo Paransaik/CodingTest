@@ -1,7 +1,5 @@
 package Eclipse;
 
-
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,11 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ3258 {
+public class BOJ_S2_3258_컴포트 {
 	static int N, Z, M;
 	static int[] M_cnt;
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	public static void main(String[] args) throws IOException {
 		StringTokenizer st;
@@ -43,7 +40,7 @@ public class BOJ3258 {
 					}
 				}
 				if (target_point == Z) {
-					bw.append(answer + " ");
+					System.out.println(answer);
 					flag = 2;
 					break;
 				}
@@ -51,6 +48,5 @@ public class BOJ3258 {
 			}
 			if (flag == 2) break;
 		}
-		bw.flush();
 	}
 }
