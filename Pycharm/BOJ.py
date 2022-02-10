@@ -3,16 +3,22 @@
 # 골드5일 때: 골드4~5 8점, 실버1 6점(37), 실버2 6점(31), 실버4 3점(28->25), 실버5 4...?(21)
 # 플레5(21 -> 6)
 
-# BOJ 2559
+# BOJ 2491
 import sys
-dummy, k = map(int, sys.stdin.readline().split())
-lst = [0] + list(map(int, sys.stdin.readline().split()))
-a = sum(lst[:k + 1])
-lcd = [a]
-for idx in range(1, len(lst) - k):
-    a = a - lst[idx] + lst[idx + k]
-    lcd.append(a)
-print(max(lcd))
+dummy = int(sys.stdin.readline())
+lsts = list(map(int, sys.stdin.readline().split()))
+
+def check_num(lst):
+    cnt, cnt_num = 1, 1
+    for i in range(len(lst)-1):
+        if lst[i] <= lst[i+1]:
+            cnt += 1
+        else:
+            cnt = 1
+        cnt_num = max(cnt_num, cnt)
+    return cnt_num
+
+print(max(check_num(lsts), check_num(lsts[::-1])))
 
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
