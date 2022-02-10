@@ -1,6 +1,5 @@
 package Eclipse;
 
-// BOJ 2775
 import java.util.Scanner;
 
 public class BOJ2775 {
