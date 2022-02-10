@@ -7,17 +7,13 @@
 import sys
 dummy = int(sys.stdin.readline())
 lsts = list(map(int, sys.stdin.readline().split()))
-
 def check_num(lst):
     cnt, cnt_num = 1, 1
     for i in range(len(lst)-1):
-        if lst[i] <= lst[i+1]:
-            cnt += 1
-        else:
-            cnt = 1
+        if lst[i] <= lst[i+1]: cnt += 1
+        else: cnt = 1
         cnt_num = max(cnt_num, cnt)
     return cnt_num
-
 print(max(check_num(lsts), check_num(lsts[::-1])))
 
 '''
