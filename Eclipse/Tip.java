@@ -13,6 +13,11 @@ public class Tip {
 //	Collections.reverse(list);
 //  Collections.max(list);
 //	Collections.min(list);
+
+//	@자바 String 숫자를 자릿수별 int 배열로 분할
+//	String str = "12345";
+//  int[] digits = Stream.of(str.split("")).mapToInt(Integer::parseInt).toArray();
+//  System.out.println( Arrays.toString(digits) );
 	
 ////	StringBuileder 주요 메소드	
 //	StringBuilder append(String s) : StringBuilder 뒤에 값을 붙임
@@ -25,7 +30,7 @@ public class Tip {
 //	StringBuilder subString(int start, int end) : start와 end 사이의 값을 잘라옴.
 	
 
-//char input[] = xxxx.charToArray()
+//char input[] = list.charToArray()
 
 //Char > int
 //char myChar = '5';
