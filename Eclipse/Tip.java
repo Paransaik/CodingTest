@@ -31,6 +31,13 @@ public class Tip {
 //	String str = Character.toString(c);
 //	String str = ch + "";
 	
+//	@int array index 찾기
+//	int end_idx = IntStream.range(0, dice[level].length).
+//    filter(i -> dice[level][hMap.get(start_idx)] == dice[level][i]).
+//    findFirst().orElse(-1);
+	
+//	@string array index 찾기
+//	Arrays.asList(arr).indexOf("b");
 	
 ////	StringBuileder 주요 메소드	
 //	StringBuilder append(String s) : StringBuilder 뒤에 값을 붙임
