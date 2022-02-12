@@ -2,7 +2,7 @@ package Eclipse;
 
 import java.util.Scanner;
 
-public class BOJ2775 {
+public class BOJ_B2_2775_부녀회장이될테야 {
 	static int T;
 	static int k, n;
 	static int[][] board;
