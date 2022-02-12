@@ -18,6 +18,19 @@ public class Tip {
 //	String str = "12345";
 //  int[] digits = Stream.of(str.split("")).mapToInt(Integer::parseInt).toArray();
 //  System.out.println( Arrays.toString(digits) );
+
+//	@문자열 -> char
+//	str.charToArray();
+	
+//	@자바 string -> char
+//	str.charAt(인덱스);
+//	str.toCharArray();
+	
+//	@자바 char -> string
+//	String str = String.valueOf(c); // 실행속도가 "" 보다 15배 빠름
+//	String str = Character.toString(c);
+//	String str = ch + "";
+	
 	
 ////	StringBuileder 주요 메소드	
 //	StringBuilder append(String s) : StringBuilder 뒤에 값을 붙임
