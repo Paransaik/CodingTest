@@ -17,7 +17,7 @@ public class Tip {
 //	@자바 String 숫자를 자릿수별 int 배열로 분할
 //	String str = "12345";
 //  int[] digits = Stream.of(str.split("")).mapToInt(Integer::parseInt).toArray();
-//  System.out.println( Arrays.toString(digits) );
+//  System.out.println(Arrays.toString(digits));
 
 //	@문자열 -> char
 //	str.charToArray();
