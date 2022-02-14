@@ -40,6 +40,7 @@ public class BOJ_S1_2564_경비원 {
 					Math.abs(arr[N][0] - arr[i][0]), 
 					2 * (X + Y) - Math.abs(arr[N][0] - arr[i][0]));
 		}
+		
 		bw.append(String.valueOf(sum));
 		bw.flush();
 		bw.close();
