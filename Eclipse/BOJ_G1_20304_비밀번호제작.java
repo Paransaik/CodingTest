@@ -1,23 +1,18 @@
 package Eclipse;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class BOJ_G1_20304_비밀번호제작 {
-	static int TC, N, M, cnt, answer;
-	static boolean flag;
-	static char[] bi;
-	static int[] arr, q;
+	static int TC, N, M, answer;
+	static int[] q;
 	static boolean[] isSelected;
 
 	public static void main(String[] args) throws Exception {
-		System.setIn(new FileInputStream("input.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
@@ -41,7 +36,7 @@ public class BOJ_G1_20304_비밀번호제작 {
 			q = queue.poll(); // q[0]: idx, q[1]: int
 
 			for (int i = 0; i < 20; i++) {
-				int que = q[1] ^ (int) Math.pow(2, i); // 해당 수와 1차이나는 경우의 수 xor 연산
+				int que = q[1] ^ 1 << i; // 해당 수와 1차이나는 경우의 수 xor 연산
 					
 				if (que > N) continue; // 10보다 작을경우만 queue에 넣음
 				if (isSelected[que]) continue; // 방문한 적이 있는 노드일 경우 skip

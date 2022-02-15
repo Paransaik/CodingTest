@@ -1,6 +1,10 @@
 package Eclipse;
 
 public class Tip {
+	
+//	@input 파일
+//	System.setIn(new FileInputStream("input.txt"));
+	
 //	@리스트 합치는 법
 //	리스트.stream().mapToInt(Integer::intValue).sum();
 //	lst.stream().mapToInt(i -> i).sum();
