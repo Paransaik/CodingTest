@@ -37,8 +37,6 @@ public class BOJ_S1_2178_미로탐색 {
 			board[i] = Stream.of(line.split("")).mapToInt(Integer::parseInt).toArray();
 		}
 		bfs(0, 0);
-		
-
 	}
 
 	public static int bfs(int x, int y) {
