@@ -6,16 +6,50 @@
 # from itertools import combinations
 # lst = sorted([x for x in list(combinations([int(input()) for _ in range(9)], 7)) if sum(x) == 100])
 
-# BOJ 14696
+
+# BOJ 7785
+lst = dict()
 for _ in range(int(input())):
-    flag = 1
-    for a, b in list(zip(sorted(list(''.join(input().split()[1:]).zfill(100)))[::-1], \
-                         sorted(list(''.join(input().split()[1:]).zfill(100)))[::-1])):
-        if a > b: print("A"); flag = 0; break;
-        elif a < b: print("B"); flag = 0; break;
-        else: flag = 1
-        if a == 0 and b == 0: break;
-    if flag: print("D")
+    a, b = input().split()
+    lst[a] = b
+lst = sorted([k for k, v in lst.items() if v == "enter"])[::-1]
+[print(l) for l in lst]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 '''
 [N,M],c=eval('map(int,input().split()),'*2);from itertools import*;print(max(i for i in map(sum,combinations(c,3))if i<=M))
 '''
