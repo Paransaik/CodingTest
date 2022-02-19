@@ -1,6 +1,10 @@
 package Eclipse;
 
 public class Tip {
+	
+//	@input 파일
+//	System.setIn(new FileInputStream("input.txt"));
+	
 //	@리스트 합치는 법
 //	리스트.stream().mapToInt(Integer::intValue).sum();
 //	lst.stream().mapToInt(i -> i).sum();
@@ -17,7 +21,7 @@ public class Tip {
 //	@자바 String 숫자를 자릿수별 int 배열로 분할
 //	String str = "12345";
 //  int[] digits = Stream.of(str.split("")).mapToInt(Integer::parseInt).toArray();
-//  System.out.println( Arrays.toString(digits) );
+//  System.out.println(Arrays.toString(digits));
 
 //	@문자열 -> char
 //	str.charToArray();
@@ -31,6 +35,13 @@ public class Tip {
 //	String str = Character.toString(c);
 //	String str = ch + "";
 	
+//	@int array index 찾기
+//	int end_idx = IntStream.range(0, dice[level].length).
+//    filter(i -> dice[level][hMap.get(start_idx)] == dice[level][i]).
+//    findFirst().orElse(-1);
+	
+//	@string array index 찾기
+//	Arrays.asList(arr).indexOf("b");
 	
 ////	StringBuileder 주요 메소드	
 //	StringBuilder append(String s) : StringBuilder 뒤에 값을 붙임
