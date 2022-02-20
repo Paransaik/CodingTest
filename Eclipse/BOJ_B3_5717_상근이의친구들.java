@@ -1,7 +1,7 @@
 package Eclipse;
 import java.util.Scanner;
 
-public class BOJ_5717_상근이의친구들 {
+public class BOJ_B3_5717_상근이의친구들 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
