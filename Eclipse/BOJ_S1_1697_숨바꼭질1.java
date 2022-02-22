@@ -44,7 +44,6 @@ public class BOJ_S1_1697_숨바꼭질1 {
 				q.offer(new int[] { pos - 1, idx + 1 });
 				visited[pos - 1] = true;
 			}
-
 		}
 	}
 }
