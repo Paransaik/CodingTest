@@ -1,3 +1,4 @@
+package Eclipse;
 
 public class BOJ_B5_10699_오늘날짜 {
 
