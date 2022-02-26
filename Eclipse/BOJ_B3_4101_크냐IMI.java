@@ -1,4 +1,5 @@
 package Eclipse;
+
 import java.util.Scanner;
 
 public class BOJ_B3_4101_크냐IMI {
