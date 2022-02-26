@@ -21,5 +21,4 @@ public class BOJ_B3_10886_0enotCute1eCute {
 			System.out.println("Junhee is cute!");
 		}
 	}
-
 }
