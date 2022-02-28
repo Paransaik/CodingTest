@@ -1,4 +1,4 @@
-package Eclipse;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 public class Form {
 	static int N, P, E;
-	static int arr[];
+	static int[] arr;
 	
 	public static void main(String[] args) throws Exception {
 		System.setIn(new FileInputStream("input.txt"));
