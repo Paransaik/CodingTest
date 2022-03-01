@@ -6,26 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-/*
-크루스칼 알고리즘
-간선 중심 해결 -> 간선 리스트
- */
-/*
-5 10
-0 1 5
-0 2 10
-0 3 8
-0 4 7
-1 2 5
-1 3 3
-1 4 6
-2 3 1
-2 4 3
-3 4 1
-
-output==>10
- */
-public class BOJ_G4_1197_최소스패닝트리 {
+public class BOJ_G4_1922_네트워크연결 {
 	static class Edge implements Comparable<Edge> {
 		int from, to, weight;
 
@@ -75,9 +56,9 @@ public class BOJ_G4_1197_최소스패닝트리 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		System.setIn(new FileInputStream("input.txt"));
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(in.readLine(), " ");
-		N = Integer.parseInt(st.nextToken());
-		int E = Integer.parseInt(st.nextToken());
+		StringTokenizer st;
+		N = Integer.parseInt(in.readLine());
+		int E = Integer.parseInt(in.readLine());
 		edgeList = new Edge[E];
 
 		for (int i = 0; i < E; i++) {
