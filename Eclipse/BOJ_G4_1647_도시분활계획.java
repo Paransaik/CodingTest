@@ -1,5 +1,4 @@
 package Eclipse;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BOJ_G4_1922_네트워크연결 {
+public class BOJ_G4_1647_도시분활계획 {
 	static class Edge implements Comparable<Edge> {
 		int from, to, weight;
 
@@ -57,9 +56,9 @@ public class BOJ_G4_1922_네트워크연결 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		System.setIn(new FileInputStream("input.txt"));
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		N = Integer.parseInt(in.readLine());
-		int E = Integer.parseInt(in.readLine());
+		StringTokenizer st = new StringTokenizer(in.readLine());
+		N = Integer.parseInt(st.nextToken());
+		int E = Integer.parseInt(st.nextToken());
 		edgeList = new Edge[E];
 
 		for (int i = 0; i < E; i++) {
@@ -77,7 +76,7 @@ public class BOJ_G4_1922_네트워크연결 {
 		for (Edge edge : edgeList) {
 			if (union(edge.from, edge.to)) {
 				result += edge.weight;
-				if (++cnt == N)
+				if (++cnt == N - 2)
 					break;
 			}
 		}
