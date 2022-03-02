@@ -1,6 +1,10 @@
 package Eclipse;
 
 public class Tip {
+
+//	@lambda 
+//	PriorityQueue<int[]> q = new PriorityQueue<>(
+//	(n1, n2) -> n1[0] != n2[0] ? n2[1] - n1[1] : n1[0] - n2[0]);	
 	
 //	@input 파일
 //	System.setIn(new FileInputStream("input.txt"));
