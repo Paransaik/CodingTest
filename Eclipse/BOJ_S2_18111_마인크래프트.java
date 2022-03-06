@@ -21,7 +21,7 @@ public class BOJ_S2_18111_마인크래프트 {
 
 		N = Integer.parseInt(st.nextToken()); // 세로 크기
 		M = Integer.parseInt(st.nextToken()); // 가로 크기
-		B = Integer.parseInt(st.nextToken()); // 인벤에 들어있는 블럭 개수 < 256
+		B = Integer.parseInt(st.nextToken()); // 인벤에 들어있는 블럭 개수 < 257
 
 		int node;
 		for (int i = 0; i < N; i++) {
