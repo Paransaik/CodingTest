@@ -44,7 +44,6 @@ public class BOJ_G5_1245_농장관리 {
 			cutMountain();
 		}
 		System.out.println(sum);
-
 	}
 
 	public static void bfs(int y, int x) {
