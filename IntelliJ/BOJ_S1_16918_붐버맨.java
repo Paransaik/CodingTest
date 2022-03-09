@@ -83,8 +83,8 @@ public class BOJ_S1_16918_붐버맨 {
                 }
             }
         }
-
     }
+
     static char[][] secondCopyMap;
     public static void four() throws Exception {
         secondCopyMap = new char[R][C];
