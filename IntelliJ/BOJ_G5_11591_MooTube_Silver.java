@@ -3,12 +3,13 @@ import java.util.*;
 
 public class BOJ_G5_11591_MooTube_Silver {
     static int N, Q;
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     static ArrayList<int []>[] list;
 
     public static void main(String[] args) throws Exception {
         System.setIn(new FileInputStream("input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
         Q = Integer.parseInt(st.nextToken());
@@ -38,7 +39,7 @@ public class BOJ_G5_11591_MooTube_Silver {
         }
     }
 
-    public static void bfs(int k, int v){
+    public static void bfs(int k, int v) throws Exception{
         int cnt = 0;
         Queue<int []> q = new LinkedList<>();
         boolean[] visited = new boolean[N + 1];
@@ -58,6 +59,6 @@ public class BOJ_G5_11591_MooTube_Silver {
                 }
             }
         }
-        System.out.println(cnt);
+        bw.append(String.valueOf(cnt));
     }
 }
