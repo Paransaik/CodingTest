@@ -6,17 +6,17 @@
 # from itertools import combinations
 # lst = sorted([x for x in list(combinations([int(input()) for _ in range(9)], 7)) if sum(x) == 100])
 
+from itertools import combinations
 
-# BOJ 7785
-lst = dict()
-for _ in range(int(input())):
-    a, b = input().split()
-    lst[a] = b
-lst = sorted([k for k, v in lst.items() if v == "enter"])[::-1]
-[print(l) for l in lst]
+def solution(number, k):
+    ln = len(number)
+    lst = list(number)
+    answer = max(list(map(lambda x: ''.join(x), combinations(lst, ln-k))))
+    return answer
 
-
-
+print(solution("1924", 2))
+print(solution("1231234", 3))
+print(solution("4177252841"	, 4))
 
 
 
