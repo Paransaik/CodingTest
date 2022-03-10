@@ -1,8 +1,7 @@
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BOJ_S1_16918_붐버맨 {
+public class BOJ_S1_16918_봄버맨 {
     static int R, C, N;
     static char[][] map;
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
