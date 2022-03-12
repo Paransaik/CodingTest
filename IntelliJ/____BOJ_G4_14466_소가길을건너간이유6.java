@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_G4_14466_소가길을건너간이유6 {
+public class ____BOJ_G4_14466_소가길을건너간이유6 {
     static int N, K, R;
     static int ans = 0, cnt = 0;
     static Queue<int[]> q = new LinkedList<>();
