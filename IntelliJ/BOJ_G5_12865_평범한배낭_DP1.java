@@ -6,9 +6,7 @@ public class BOJ_G5_12865_평범한배낭_DP1 {
     static int[][] dp, items;
 
     public static void main(String[] args) throws Exception {
-        System.setIn(new FileInputStream("input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         N = Integer.parseInt(st.nextToken()); // R
