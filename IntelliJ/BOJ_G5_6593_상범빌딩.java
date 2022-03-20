@@ -24,27 +24,24 @@ public class BOJ_G5_6593_상범빌딩 {
             if (L + R + C == 0) break;
 
             map = new char[L][R][C];
+            int si, sj, sk;
+            si = sj = sk = -1;
             for (int i = 0; i < L; i++) {
                 for (int j = 0; j < R; j++) {
                     map[i][j] = br.readLine().toCharArray();
-                }
-                br.readLine();
-            }
-
-            OUTER:
-            for (int i = 0; i < L; i++) {
-                for (int j = 0; j < R; j++) {
                     for (int k = 0; k < C; k++) {
-                        if (map[i][j][k] == 'S') {
-                            int maze = bfs(i, j, k);
-                            if (maze == 0) bw.append("Trapped!").append("\n");
-                            else
-                                bw.append("Escaped in ").append(String.valueOf(maze)).append(" minute(s).").append("\n");
-                            break OUTER;
+                        if (map[i][j][k] == 'S'){
+                            si = i;
+                            sj = j;
+                            sk = k;
                         }
                     }
                 }
+                br.readLine();
             }
+            int maze = bfs(si, sj, sk);
+            if (maze == 0) bw.write("Trapped!\n");
+            else bw.append("Escaped in ").append(String.valueOf(maze)).append(" minute(s).").append("\n");
         }
         bw.flush();
     }
