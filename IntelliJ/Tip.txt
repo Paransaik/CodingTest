@@ -1,0 +1,10 @@
+git filter-branch --env-filter \
+    'if [ $GIT_COMMIT = d4cd457a5a23f618710e2561cadcfb6215117582 ]
+     then
+         export GIT_AUTHOR_DATE="Tue Mar 22 11:00:00 2022 +0900"
+         export GIT_COMMITTER_DATE="Tue Mar 22 11:00:00 2022 +0900"
+     fi'
+
+git pull --allow-unrelated-histories origin main
+
+git push origin main

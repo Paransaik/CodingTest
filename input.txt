@@ -1,6 +1,9 @@
 1
-4
+7
 a b
 b c
 c a
-b a
+d e
+e d
+d e
+a b
