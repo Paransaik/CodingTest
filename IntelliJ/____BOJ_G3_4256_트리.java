@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class BOJ_G3_4256_트리 {
+public class ____BOJ_G3_4256_트리 {
 	static int[] nodes;
 	static int SIZE, lastIndex;
 //	static void dfsByPreOrder(int current) {

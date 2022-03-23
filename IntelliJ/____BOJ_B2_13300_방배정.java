@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_B2_13300_방배정 {
+public class ____BOJ_B2_13300_방배정 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static StringTokenizer st;
@@ -19,8 +19,6 @@ public class BOJ_B2_13300_방배정 {
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			arr[i] = Integer.parseInt(st.nextToken());
-			
-			
 		}
 	}
 

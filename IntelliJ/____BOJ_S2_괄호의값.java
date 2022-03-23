@@ -5,7 +5,7 @@ import java.io.OutputStreamWriter;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class BOJ_S2_괄호의값 {
+public class ____BOJ_S2_괄호의값 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static int ans = 0, allSum = 0, sum = 0;

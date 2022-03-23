@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_S1_18233_리버덕을사랑하는모임 {
+public class ____BOJ_S1_18233_리버덕을사랑하는모임 {
 	static int N, P, E;
 	static long arr[];
 	

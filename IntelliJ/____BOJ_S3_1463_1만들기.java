@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BOJ_S3_1463_1만들기 {
+public class ____BOJ_S3_1463_1만들기 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int[] b = new int[1000000];
