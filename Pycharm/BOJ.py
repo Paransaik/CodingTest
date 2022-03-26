@@ -6,37 +6,99 @@
 # from itertools import combinations
 # lst = sorted([x for x in list(combinations([int(input()) for _ in range(9)], 7)) if sum(x) == 100])
 
-from itertools import combinations
+# from itertools import combinations
+#
+# def solution(number, k):
+#     ln = len(number)
+#     lst = list(number)
+#     answer = max(list(map(lambda x: ''.join(x), combinations(lst, ln-k))))
+#     return answer
+#
+# print(solution("1924", 2))
+# print(solution("1231234", 3))
+# print(solution("4177252841"	, 4))
 
-def solution(number, k):
-    ln = len(number)
-    lst = list(number)
-    answer = max(list(map(lambda x: ''.join(x), combinations(lst, ln-k))))
-    return answer
+# 라인 5번
+# import heapq
+# pq = []
+# def solution(abilities, k):
+#     answer = 0
+#     if len(abilities) % 2 == 1: abilities.append(0)
+#     abilities = sorted(abilities)[::-1]
+#     you = []
+#     me = []
+#
+#     for i in range(len(abilities)):
+#         if i % 2 == 0: you.append(abilities[i])
+#         else: me.append(abilities[i])
+#
+#     # 같은 경우 answer에 넣고, 다른 경우 pq에 넣어 k개수만큼 뽑기 위한 전처리
+#     for i, (y, m) in enumerate(zip(you, me)):
+#         if y == m: answer += m
+#         else: heapq.heappush(pq, (m-y, i))
+#
+#     # k개수 만큼 pq에서 pop함
+#     for _ in range(k): answer += you[heapq.heappop(pq)[1]]
+#     # 남은 원소 다 더 함
+#     while pq: answer += me[heapq.heappop(pq)[1]]
+#
+#     return answer
+# print(solution([2, 8, 3, 6, 1, 9, 1, 9], 2))
+# print(solution([7, 6, 8, 9, 10], 1))
 
-print(solution("1924", 2))
-print(solution("1231234", 3))
-print(solution("4177252841"	, 4))
+
+# 라인 1번
+# log_key = ["team_name", "application_name", "error_level", "message"]
+# def checked_log(arrs):
+#     for i, arr in enumerate(arrs):
+#         for lo in arr:
+#             ck = ord(lo)
+#             if ck < 32 or (32 < ck and ck < 65) or (ck > 90 and ck < 95) or ck == 96 or ck > 122:
+#                 return False
+#         if i == 0:
+#             if arr != log_key[0]: return False
+#         if 0 < i and i < 4:
+#             ar = arr.split(" ")
+#             if(len(ar)) != 2: return False
+#             if ar[1] == log_key[i]: # 키 정상 확인
+#                 if ar[0].upper() or ar[0].lower(): # 대문자, 소문자 확인
+#                     if ar[1] != log_key[i]: return False
+#                 else: return False
+#             else: return False
+#         if i > 4: return False
+#     return True
+#
+# def solution(logs):
+#     answer = 0
+#     for log in logs:
+#         if len(log) >= 100:
+#             answer += 1
+#             continue
+#         lst = log.split(" : ")
+#         if not checked_log(lst):
+#             answer += 1
+#     return answer
+
+# print(solution(["team_name : recommend application_name : recommend error_level : info message : RecommendSucces11",
+#                 "team_name : recommend application_name : recommend error_level : info message : Success!"]))
 
 
+# print(solution(["team_name : MyTeam application_name : YourApp error_level : info messag : IndexOutOfRange",
+#                 "no such file or directory",
+#                 "team_name : recommend application_name : recommend error_level : info message : RecommendSucces11",
+#                 "team_name : recommend application_name : recommend error_level : info message : Success!",
+#                 "   team_name : db application_name : dbtest error_level : info message : test",
+#                 "team_name     : db application_name : dbtest error_level : info message : test",
+#                 "team_name : TeamTest application_name : TestApplication error_level : info message : ThereIsNoError"])) #
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# def solution(arr, brr):
+#     answer = -1
+#     for i, ar in enumerate(arr):
+#         arr
+#     return answer
+#
+#
+# print(solution([3, 7, 2, 4], [4, 5, 5, 2]))
 
 
 
