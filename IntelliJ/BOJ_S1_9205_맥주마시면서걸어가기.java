@@ -4,9 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class ____BOJ_S1_9205_맥주마시면서걸어가기 {
-    static int N, sY, sX, y, x, eY, eX;
-    static String ans;
+public class BOJ_S1_9205_맥주마시면서걸어가기 {
+    static int N, y, x;
     static Queue<Position> q = new LinkedList<>();
     static ArrayList<Position> l = new ArrayList<>();
 
@@ -22,26 +21,36 @@ public class ____BOJ_S1_9205_맥주마시면서걸어가기 {
             l.clear();
 
             N = Integer.parseInt(br.readLine()); // 편의점 수
-
-            st = new StringTokenizer(br.readLine());
-            sY = Integer.parseInt(st.nextToken());
-            sX = Integer.parseInt(st.nextToken());
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < N + 2; i++) {
                 st = new StringTokenizer(br.readLine());
                 y = Integer.parseInt(st.nextToken());
                 x = Integer.parseInt(st.nextToken());
                 l.add(new Position(y, x));
             }
-            st = new StringTokenizer(br.readLine());
-            eY = Integer.parseInt(st.nextToken());
-            eX = Integer.parseInt(st.nextToken());
-
-            bw.append((bfs())? "happy\n": "sad\n");
+            bw.append((bfs()) ? "happy\n" : "sad\n");
         }
+        bw.flush();
     }
 
     public static boolean bfs() {
+        int len = l.size();
+        boolean[] visited = new boolean[len];
+        q.offer(l.get(0));
+        visited[0] = true;
+        while (!q.isEmpty()) {
+            Position p = q.poll();
 
+            int yP, xP;
+            for (int i = 1; i < len; i++) {
+                yP = l.get(i).y;
+                xP = l.get(i).x;
+                if (!visited[i] && Math.abs(p.x - xP) + Math.abs(p.y - yP) <= 1000) {
+                    q.offer(new Position(yP, xP));
+                    visited[i] = true;
+                }
+                if (visited[len - 1]) return true;
+            }
+        }
         return false;
     }
 
