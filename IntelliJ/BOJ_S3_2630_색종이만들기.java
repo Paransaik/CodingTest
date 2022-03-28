@@ -1,15 +1,17 @@
-import java.io.*;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class ____BOJ_S3_2630_색종이만들기 {
-    static int N, cnt;
+public class BOJ_S3_2630_색종이만들기 {
+    static int N, B = 0, W = 0;
     static int[][] map;
 
     public static boolean DnC(int y, int x, int size){
+        int toggle = map[y][x];
         for (int i = y; i < y + size; i++) {
             for (int j = x; j < x + size; j++) {
-                if (map[i][y] == 0){
+                if (map[i][j] != toggle){
                     DnC(y, x, size / 2);
                     DnC(y, x + size/2, size / 2);
                     DnC(y + size/2, x, size / 2);
@@ -18,7 +20,8 @@ public class ____BOJ_S3_2630_색종이만들기 {
                 }
             }
         }
-        cnt++;
+        if(toggle == 1) B++;
+        else W++;
         return true;
     }
 
@@ -36,10 +39,9 @@ public class ____BOJ_S3_2630_색종이만들기 {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        for (int i = 0; i < N; i++) {
-            System.out.println(Arrays.toString(map));
-        }
+
         DnC(0, 0, N);
-        System.out.println(cnt);
+        System.out.println(W);
+        System.out.println(B);
     }
 }
