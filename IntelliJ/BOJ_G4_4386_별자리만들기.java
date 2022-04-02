@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class BOJ_G4_4386_별자기만들기 {
+public class BOJ_G4_4386_별자리만들기 {
     static int N;
     static int[] parents;
     static double[][] stars;
