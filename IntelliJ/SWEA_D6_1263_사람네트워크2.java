@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class SWEA_D6_1263_D6_사람네트워크2 {
+public class SWEA_D6_1263_사람네트워크2 {
     static final int INF = 9999999;
     static int N, adjMatrix[][];
 
