@@ -1,5 +1,7 @@
 # 로컬 저장소로 커밋 로그를 잘못 남긴 경우 이를 수정할 수 있습니다. amend는 참고로 '수정하다'라는 뜻을 갖고 있습니다.
 # (╯°□°）╯ ︵ ɯɥʇᴉɹoƃl∀
+a, b = map(int, input().split())
+print(abs(a-b))
 
 # import time start = time.time() # 시작시간 # 코드 작성 end = time.time() # 종료시간 print("time :", end - start) # 실핼시간 = 종료시간 - 시작시간
 # # BOJ 2309
