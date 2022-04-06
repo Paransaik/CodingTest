@@ -20,6 +20,9 @@ public class BOJ_G4_15961_회전초밥 {
             if (count[arr[i]] == 0) cnt++;
             count[arr[i]]++;
         }
+        for (int i = 0; i < 31; i++) {
+            System.out.print(count[i] + " ");
+        }
         int ans = cnt;
         for (int i = k; i < n + k - 1; i++) {
             if (count[c] == 0) {
@@ -28,9 +31,7 @@ public class BOJ_G4_15961_회전초밥 {
                 ans = Math.max(ans, cnt);
             }
             count[arr[(i - k) % n]]--;
-            if (count[arr[i - k]] == 0) {
-                cnt--;
-            }
+            if (count[arr[i - k]] == 0) cnt--;
             if (count[arr[i % n]] == 0) cnt++;
             count[arr[i % n]]++;
         }
