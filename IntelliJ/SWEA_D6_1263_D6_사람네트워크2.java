@@ -6,7 +6,6 @@ public class SWEA_D6_1263_D6_사람네트워크2 {
     static int N, adjMatrix[][];
 
     public static void main(String[] args) throws Exception {
-        System.setIn(new FileInputStream("input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
@@ -23,7 +22,6 @@ public class SWEA_D6_1263_D6_사람네트워크2 {
                     }
                 }
             }
-            print();
             int ans = 0;
             for (int k = 0; k < N; ++k) {
                 for (int i = 0; i < N; ++i) {
@@ -33,8 +31,8 @@ public class SWEA_D6_1263_D6_사람네트워크2 {
                         }
                     }
                 }
-                ans = print();
             }
+            ans = print();
             bw.append("#").append(String.valueOf(tc)).append(" ").append(String.valueOf(ans)).append("\n");
         }
         bw.flush();
