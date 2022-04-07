@@ -34,13 +34,14 @@ public class BOJ_G4_17471_게리맨더링 {
 
         ans = Integer.MAX_VALUE;
         permutation(1);
+        if (ans == Integer.MAX_VALUE) ans = -1;
         System.out.println(ans);
 
     }
 
-    public static void permutation(int cnt){
+    public static void permutation(int cnt) {
         if (cnt == N + 1) {
-            if (checkRegion(true) || checkRegion(false)) {
+            if (checkRegion(true) && checkRegion(false)) {
                 int aP = 0, bP = 0;
                 for (int i = 1; i <= N; i++) {
                     if (visited[i]) aP += arrN[i];
@@ -57,12 +58,13 @@ public class BOJ_G4_17471_게리맨더링 {
         permutation(cnt + 1);
     }
 
-    public static boolean checkRegion(boolean b){
+    public static boolean checkRegion(boolean b) {
         Queue<Integer> q = new LinkedList<>();
         Set<Integer> s = new HashSet<>();
         for (int i = 1; i <= N; i++) {
             if (visited[i] == b) s.add(i);
         }
+        if (s.size() == 0 || s.size() == N) return false;
         for (int i = 1; i <= N; i++) {
             if (s.contains(i)) {
                 q.offer(i);
@@ -80,7 +82,7 @@ public class BOJ_G4_17471_게리맨더링 {
                 }
             }
         }
-        if(s.size() != 0) return false;
+        if (s.size() != 0) return false;
         return true;
     }
 }
