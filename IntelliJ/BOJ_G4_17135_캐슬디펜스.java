@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.PriorityQueue;
@@ -78,7 +77,6 @@ public class BOJ_G4_17135_캐슬디펜스 {
             int col = integer & ((1 << 4) - 1);
             copyMap[row][col] = 0;
         }
-
         return cnt;
     }
 
