@@ -1,3 +1,5 @@
+/**
+git hub coomit modify
 git filter-branch --env-filter \
     'if [ $GIT_COMMIT = d4cd457a5a23f618710e2561cadcfb6215117582 ]
      then
@@ -8,3 +10,11 @@ git filter-branch --env-filter \
 git pull --allow-unrelated-histories origin main
 
 git push origin main
+*/
+/**
+ * [ Lambda 의 기본 틀 ]
+ * Predicate    : (T -> boolean)    -> 주로 필터에 사용
+ * Supplier     : (() -> T)         -> 만드는놈(객체 생성)
+ * Consumer     : (T -> void)       -> 쓰는놈(실행에 사용)
+ * Function     : (T -> R)          -> From 에서 뭔가를 To 로 만들어 넘김
+ */
