@@ -35,7 +35,6 @@ public class SWEA_D3_5607_조합 {
     }
 
     public static long FLT(long x, long m, long p) {
-        // n * (u^p-2 % p)
         long res = 1L;
         while (m > 0) {
             if (m % 2 == 1) res = (res * x) % p;
