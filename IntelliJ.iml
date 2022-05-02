@@ -5,7 +5,7 @@
       <configuration sdkName="Python 3.8 (IntelliJ)" />
     </facet>
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/out" />
     <output-test url="file://$MODULE_DIR$/out" />
     <exclude-output />
