@@ -27,7 +27,7 @@ public class BOJ_G2_17143_낚시왕 {
         shark = new int[M][5];
         // r, c, s, d, z
         // r, c, 속력, 이동방향, 크기
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < 1; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < 5; j++) {
                 shark[i][j] = Integer.parseInt(st.nextToken());
