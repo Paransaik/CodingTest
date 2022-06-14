@@ -38,12 +38,6 @@ public class PRO_L3_72413_환승택시요금 {
                         }
                     }
                 }
-                for (int i = 0; i < n; i++) {
-                    for (int j = 0; j < n; j++) {
-                        System.out.print(adjMatrix[i][j] + "\t");
-                    }
-                    System.out.println();
-                }
             }
 
             s -= 1;
