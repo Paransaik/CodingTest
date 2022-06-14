@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PRO_L2_72412_순위검색 {
     public static void main(String[] args) {
@@ -44,7 +46,15 @@ public class PRO_L2_72412_순위검색 {
                 }
             }
 
-
+            String test = "java backend";
+            String REGEX = String.format(
+                    "%s\\s%s",
+                    Pattern.quote(qry[0][0]),
+                    Pattern.quote(qry[0][2])
+            );
+            Pattern pattern = Pattern.compile(REGEX);
+            Matcher regex = pattern.matcher(test);
+            System.out.println(regex);
             int[] answer = {};
             return answer;
         }
