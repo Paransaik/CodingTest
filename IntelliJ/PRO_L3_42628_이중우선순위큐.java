@@ -9,38 +9,30 @@ public class PRO_L3_42628_이중우선순위큐 {
 
     static class Solution {
         public int[] solution(String[] operations) {
-            PriorityQueue<Integer> maxQ = new PriorityQueue<>(Comparator.reverseOrder());
-            PriorityQueue<Integer> minQ = new PriorityQueue<>();
-            Map<Integer, Integer> m = new HashMap<>();
+            TreeMap<Integer, Integer> t = new TreeMap<>();
 
             for (String operation : operations) {
                 String[] line = operation.split(" ");
                 int num = Integer.parseInt(line[1]);
                 switch (line[0]) {
                     case "I":
-                        maxQ.offer(num);
-                        minQ.offer(num);
-                        m.put(num, m.getOrDefault(num, 0) + 1);
+                        t.put(num, t.getOrDefault(num, 0) + 1);
                         break;
                     case "D":
-                        if (m.size() != 0) {
-                            if (num == 1 && !maxQ.isEmpty()) num = maxQ.poll();
-                            else if (!minQ.isEmpty()) num = minQ.poll();
-                            m.put(num, m.get(num) - 1);
-                            if (m.get(num) == 0) m.remove(num);
-                            System.out.println(m.size());
+                        if (!t.isEmpty()) {
+                            int key = (num == 1) ? t.lastKey() : t.firstKey();
+                            int cnt = t.get(key) - 1;
+                            if (cnt == 0) t.remove(key);
+                            else t.put(key, cnt);
                         }
                         break;
                 }
             }
 
             int[] answer = new int[2];
-            if (m.size() != 0) {
-                List<Integer> keys = new ArrayList<>(m.keySet());
-                Collections.sort(keys);
-
-                answer[0] = keys.get(keys.size() - 1);
-                answer[1] = keys.get(0);
+            if (!t.isEmpty()) {
+                answer[0] = t.lastKey();
+                answer[1] = t.firstKey();
             }
             return answer;
         }
