@@ -33,69 +33,61 @@ public class PRO_L3_42579_베스트앨범 {
                 l.add(new Sing(i, genre, cnt[0], cnt[1], plays[i]));
             }
 
-            for (Sing sing : l) {
-                System.out.println(sing);
-            }
-            System.out.println();
             Collections.sort(l);
-            for (Sing sing : l) {
-                System.out.println(sing);
-            }
 
             List<Integer> ans = new ArrayList<>();
-            // 2개씩 Ans에 담기
             String genre = l.get(0).genre;
             int cnt = 0;
-            boolean pass = false;
+            // 2개씩 Ans에 담기
             for (Sing sing : l) {
-
-                if (cnt < 2 && !pass) {
-                    if(genre != sing.genre) continue;
+                if (cnt < 2 && genre.equals(sing.genre)) {
+                    System.out.println(sing);
                     genre = sing.genre;
                     ans.add(sing.idx);
                     cnt++;
-                } else if(pass){
-                    continue;
+                } else if (!genre.equals(sing.genre)) {
+                    genre = sing.genre;
+                    ans.add(sing.idx);
+                    cnt = 1;
                 }
-//
-//                // Pass가 True면 Pass
-//                if(pass) continue;
-//                if(genre != sing.genre) pass = false;
-//                // 2개를 담았으면 Pass true
-//                if(cnt >= 2) pass = true;
-//
-//                if(cnt < 2 && !pass){
-//                    genre = sing.genre;
-//                    cnt++;
-//                }
             }
 
+            int aLen = ans.size();
+            int[] answer = new int[aLen];
+            for (int i = 0; i < aLen; i++) {
+                answer[i] = ans.get(i);
+            }
             return answer;
         }
     }
 
     static class Sing implements Comparable<Sing> {
-        int idx;
-        String genre;
-        int cntGenre;
-        int sumPlayNo;
-        int playNo;
+        int idx; // 고유번호
+        String genre; // 장르
+        int cntGenre; // 장르 개수
+        int sumPlayNo; // 장르 총 플레이 수
+        int playNo; // 단일 플레이 수
 
         public Sing(int idx, String genre, int cntGenre, int sumPlayNo, int playNo) {
-            this.idx = idx; // 고유번호
-            this.genre = genre; // 장르
-            this.cntGenre = cntGenre; // 장르 개수
-            this.sumPlayNo = sumPlayNo; // 장르 총 플레이 수
-            this.playNo = playNo; // 단일 플레이 수
+            this.idx = idx;
+            this.genre = genre;
+            this.cntGenre = cntGenre;
+            this.sumPlayNo = sumPlayNo;
+            this.playNo = playNo;
         }
 
         // 1. 장르 2. 장르내에 재생횟수 3. 고유번호
+        /*
+        * 속한 노래가 많이 재생된 장르를 먼저 수록합니다.
+        장르 내에서 많이 재생된 노래를 먼저 수록합니다.
+        장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
+        * */
         @Override
         public int compareTo(Sing o) {
-            if (this.cntGenre == o.cntGenre) {
+            if (this.sumPlayNo == o.sumPlayNo) {
                 return (this.playNo == o.playNo) ? this.idx - o.idx : o.playNo - this.playNo;
             }
-            return o.cntGenre - this.cntGenre;
+            return o.sumPlayNo - this.sumPlayNo;
         }
 
         @Override
