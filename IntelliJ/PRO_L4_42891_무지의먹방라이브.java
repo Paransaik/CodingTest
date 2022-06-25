@@ -7,8 +7,6 @@ public class PRO_L4_42891_무지의먹방라이브 {
     }
 
     static class Solution {
-        // 1. 배열의 최솟값 * 배열 개수를 K에서 뺌
-        // 2. K가 배열의 길이보다 작아질 때까지 반복
         public int solution(int[] food_times, long k) {
             int len = food_times.length;
             LinkedList<int[]> l = new LinkedList<>();

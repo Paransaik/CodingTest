@@ -5,7 +5,7 @@ public class PRO_L3_87694_아이템줍기 {
         Solution s = new Solution();
 //        System.out.println(s.solution(new int[][]{{1, 1, 7, 4}, {3, 2, 5, 5}, {4, 3, 6, 9}, {2, 6, 8, 8}}, 1, 3, 7, 8));
 //        System.out.println(s.solution(new int[][]{{1, 1, 8, 4}, {2, 2, 4, 9}, {3, 6, 9, 8}, {6, 3, 7, 7}}, 9, 7, 6, 1));
-        System.out.println(s.solution(new int[][]{{2,1,7,5}, {6,4,10,10}}, 3,1, 7, 10));
+        System.out.println(s.solution(new int[][]{{2, 1, 7, 5}, {6, 4, 10, 10}}, 3, 1, 7, 10));
     }
 
     static class Solution {

@@ -41,8 +41,6 @@ public class PRO_L3_42579_베스트앨범 {
             // 2개씩 Ans에 담기
             for (Sing sing : l) {
                 if (cnt < 2 && genre.equals(sing.genre)) {
-                    System.out.println(sing);
-                    genre = sing.genre;
                     ans.add(sing.idx);
                     cnt++;
                 } else if (!genre.equals(sing.genre)) {

@@ -43,11 +43,6 @@ public class BOJ_G4_14499_주사위굴리기 {
                     if (checkRange(Y + 1, X)) down();
                     break;
             }
-            /*for (int[] ints : map) {
-                System.out.println(Arrays.toString(ints));
-            }
-            System.out.println(Arrays.toString(dice));
-            System.out.println("===================");*/
         }
     }
 
