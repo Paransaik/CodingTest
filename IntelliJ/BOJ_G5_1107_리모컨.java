@@ -2,11 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-/*
-0
-9
-0 1 2 3 4 5 6 7 8
-* */
 public class BOJ_G5_1107_리모컨 {
     static final int maxChannel = 500000;
 
@@ -37,9 +32,11 @@ public class BOJ_G5_1107_리모컨 {
                 if (flag) {
                     min = Math.min(min, s.length() + Math.abs(channel - i));
                     min = Math.min(min, s.length() + Math.abs(channel - 100));
+                    min = Math.min(min, Math.abs(channel - 100));
                 }
             }
         } else min = 0;
+        if (num == 10) min = Math.abs(channel - 100);
         System.out.println(min);
     }
 }
