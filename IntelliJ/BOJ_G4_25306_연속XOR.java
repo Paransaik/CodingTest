@@ -10,9 +10,19 @@ public class BOJ_G4_25306_연속XOR {
         BigInteger s = new BigInteger(st.nextToken());
         BigInteger e = new BigInteger(st.nextToken());
         BigInteger ans = new BigInteger("0");
-        for (BigInteger i = s; i.compareTo(e) <= 0; i = i.add(BigInteger.ONE)) {
+        BigInteger four = new BigInteger("4");
+
+        BigInteger aMod = s.mod(four);
+        BigInteger len = four.subtract(aMod);
+        for (BigInteger i = s; i.compareTo(s.add(len)) < 0; i = i.add(BigInteger.ONE)) {
             ans = ans.xor(i);
         }
+
+        BigInteger bMod = e.mod(four);
+        for (BigInteger i = e.subtract(bMod); i.compareTo(e) <= 0; i = i.add(BigInteger.ONE)) {
+            ans = ans.xor(i);
+        }
+
         System.out.println(ans);
     }
 }
