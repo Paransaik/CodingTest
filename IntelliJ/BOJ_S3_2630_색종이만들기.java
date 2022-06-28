@@ -7,20 +7,20 @@ public class BOJ_S3_2630_색종이만들기 {
     static int N, B = 0, W = 0;
     static int[][] map;
 
-    public static boolean DnC(int y, int x, int size){
+    public static boolean DnC(int y, int x, int size) {
         int toggle = map[y][x];
         for (int i = y; i < y + size; i++) {
             for (int j = x; j < x + size; j++) {
-                if (map[i][j] != toggle){
+                if (map[i][j] != toggle) {
                     DnC(y, x, size / 2);
-                    DnC(y, x + size/2, size / 2);
-                    DnC(y + size/2, x, size / 2);
-                    DnC(y + size/2, x + size/2, size / 2);
+                    DnC(y, x + size / 2, size / 2);
+                    DnC(y + size / 2, x, size / 2);
+                    DnC(y + size / 2, x + size / 2, size / 2);
                     return false;
                 }
             }
         }
-        if(toggle == 1) B++;
+        if (toggle == 1) B++;
         else W++;
         return true;
     }
