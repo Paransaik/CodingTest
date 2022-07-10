@@ -18,7 +18,7 @@ public class PRO_L1_72410_신규아이디추천 {
                     answer += c;
                 }
             }
-            answer.replaceAll("[.]{2,}", ".").replaceAll("^[.]", "").replaceAll("[.]$", "");
+            answer = answer.replaceAll("[.]{2,}", ".").replaceAll("^[.]", "").replaceAll("[.]$", "");
             if (answer.equals("")) answer += "a";
             if (answer.length() >= 16) answer = answer.substring(0, 15).replaceAll("[.]$", "");
             while (answer.length() < 3) answer += answer.substring(answer.length() - 1);
