@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_G3_16236_아기상어 {
+public class ____BOJ_G3_16236_아기상어 {
     static int size;
     static int[][] map;
 
@@ -28,7 +28,6 @@ public class BOJ_G3_16236_아기상어 {
                 }
             }
         }
-
         System.out.println(bfs(y, x));
     }
 
@@ -59,6 +58,7 @@ public class BOJ_G3_16236_아기상어 {
                 if (map[ny][nx] != 0 && map[ny][nx] <= sharkSize) {
                     map[ny][nx] = 0;
                     visited = new boolean[size][size];
+                    visited[ny][nx] = true;
                     q.offer(new int[]{ny, nx, sharkSize + 1, time + 1});
                     ans += time + 1;
                 }

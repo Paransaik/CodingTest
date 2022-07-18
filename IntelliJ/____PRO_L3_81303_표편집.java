@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class PRO_L3_81303_표편집 {
+public class ____PRO_L3_81303_표편집 {
     public static void main(String[] args) {
-        System.out.println(solution(8, 2, new String[]{"D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z"}));
+//        System.out.println(solution(8, 2, new String[]{"D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z"}));
         System.out.println(solution(8, 2, new String[]{"D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z", "U 1", "C"}));
     }
 
@@ -11,24 +11,12 @@ public class PRO_L3_81303_표편집 {
 
     public static String solution(int n, int k, String[] cmd) {
         idx = k;
-        l = new LinkedList<>();
-        Deque<String> q = new ArrayDeque<>();
+        l = new ArrayList<>();
+        Stack<int[]> stack = new Stack<>();
 
         for (int i = 0; i < n; i++) l.add(i);
 
-        int cnt = 0;
-        for (int i = cmd.length - 1; i > -1; i--) {
-            if (cnt > 0 && cmd[i].equals("C")) {
-                cnt--;
-                continue;
-            } else if (cmd[i].equals("Z")) {
-                cnt++;
-                continue;
-            }
-            q.addFirst(cmd[i]);
-        }
-
-        for (String s : q) {
+        for (String s : cmd) {
             String[] oper = s.split(" ");
 
             switch (oper[0]) {
@@ -39,8 +27,13 @@ public class PRO_L3_81303_표편집 {
                     idx -= Integer.parseInt(oper[1]);
                     break;
                 case "C":
-                    l.remove(idx);
+                    stack.add(new int[]{idx, l.remove(idx)});
                     if (idx == l.size()) idx--;
+                    break;
+                case "Z":
+                    int[] node = stack.pop();
+                    if (node[0] >= idx) idx++;
+                    l.add(node[0], node[1]);
                     break;
                 default:
                     break;
